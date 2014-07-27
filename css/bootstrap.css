@@ -3772,11 +3772,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
  
 }
-@media (min-width: 768px) {
-  .navbar {
-    border-radius: 4px;
-  }
-}
+
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
@@ -3924,6 +3920,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+  padding-right: 30px; /* avstånd mellan länkarna */
+  padding-left: 30px;
 }
 
 
@@ -3955,7 +3953,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
+  color: #A4025B;
   background-color: transparent;
 }
   .navbar-nav .open .dropdown-menu > li > a,
@@ -4123,13 +4121,13 @@ display: inline-block;
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #FFF;
-  background-color: transparent;
+  background-color: #A4025B;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #FFF;
-  background-color: #e7e7e7;
+  background-color: #A4025B;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -4142,7 +4140,7 @@ display: inline-block;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #A4025B;
+  background-color: #A4025B; /*! Backgrundsfärg på menyn i mobilläge */
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #FFF; /*! Stäckfärg */
@@ -4888,8 +4886,8 @@ a.list-group-item:focus {
 .list-group-item.active:focus {
   z-index: 2;
   color: #fff;
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #DF007B;
+  border-color: #DF007B;
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,
@@ -6218,15 +6216,17 @@ button.close {
 
 .open_time {
 background-color: #DF007B;
-min-height: 45px;
+
 }
 
-.open_time h3 {
+.open_time h4 {
 color: #FFF;
-text-align: center;
-margin: auto;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom:10px;
 
 }
+
 
 
 
@@ -6235,11 +6235,11 @@ margin: auto;
 .footer {
 width:100%;
 height:60px;
-position:absolute;
-bottom: 0;
+position:fixed;
+bottom: 0px;
 left:0;
+background-color: #FFF;
 }
-
 
 .footer img {
   max-width: 100px;

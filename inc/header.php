@@ -40,11 +40,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="index.php">Start</a></li>
+        <li><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></li>
         <li><a href="index1.php">Startsida-test1</a></li>
         <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
 
+      </ul>
+            <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Logga in</a></li>
       </ul>
     <!--  <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
