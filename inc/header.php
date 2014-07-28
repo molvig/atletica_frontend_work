@@ -41,9 +41,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="index1.php">Startsida-test1</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <li><a href="#">GYMMET</a></li>
+        <li><a href="#">PASS</a></li>
+        <li><a href="#">KURSER</a></li>
+        <li><a href="#">PERSONLIG TRÄNING</a></li>
+        <li><a href="#">KOST</a></li>
 
       </ul>
             <ul class="nav navbar-nav navbar-right">
