@@ -2777,6 +2777,14 @@ fieldset[disabled] .btn {
   background-color: #fff;
   border-color: #ccc;
 }
+
+.btn-default_1 {
+  float: right;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,

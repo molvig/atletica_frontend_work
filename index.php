@@ -31,7 +31,7 @@
               <div class="panel-body">
                 Shake that ass!
           
-          <button type="submit" class="btn btn-default">Boka</button>
+          <button type="submit" class="btn btn-default_1">Boka</button>
        
               </div>
             </div>
@@ -49,7 +49,7 @@
           <div id="collapseTwo" class="panel-collapse collapse">
             <div class="panel-body">
               Gott för magen.
-              <button type="submit" class="btn btn-default">Boka</button>
+              <button type="submit" class="btn btn-default_1">Boka</button>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
           <div id="collapseThree" class="panel-collapse collapse">
             <div class="panel-body">
               Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-              <button type="submit" class="btn btn-default">Boka</button>
+              <button type="submit" class="btn btn-default_1">Boka</button>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
           <div id="collapseFour" class="panel-collapse collapse">
             <div class="panel-body">
               Häng i lianer som en apa!
-              <button type="submit" class="btn btn-default">Boka</button>
+              <button type="submit" class="btn btn-default_1">Boka</button>
             </div>
           </div>
         </div>
