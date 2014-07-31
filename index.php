@@ -13,7 +13,7 @@
 
 <div class="orbit-container">
   <form role="form" action="minsida.php">
-<div class="grid_1a">
+
     <div class="list-group">
       <a href="login.php" class="list-group-item active">
        BOKA PASS
@@ -88,8 +88,7 @@
         </div>
 
      </div>
-    </div>
-  </div>  
+    </div> 
 </form>
   </div>  
 

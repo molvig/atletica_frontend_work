@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <title>Atletica_frontend</title>
 
     <!-- Bootstrap -->
@@ -41,16 +42,19 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#">GYMMET</a></li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GYMMET<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="instruktorer.php">Instruktörer</a></li>
+            <li><a href="#">länk</a></li>          
+          </ul>
+        </li>
         <li><a href="#">PASS</a></li>
         <li><a href="#">KURSER</a></li>
-        <li><a href="#">PERSONLIG TRÄNING</a></li>
-        <li><a href="#">KOST</a></li>
-
-      </ul>
-            <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">PT & KOST</a></li>
         <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Logga in</a></li>
-      </ul>
+        
+
     <!--  <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
