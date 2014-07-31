@@ -9,8 +9,14 @@
 			</div>	
 
 			<div class="inst">
-				<p>Namn: Sandra <br>
-				Motto: Strong is the new skinny</p>
+					<dl>
+					  <dt>Namn</dt>
+					  <dd>Sandra</dd>
+					</dl>
+					<dl>
+					  <dt>Motto</dt>
+					  <dd>Träna är gött :)</dd>
+					</dl>
 			</div>	
 		</div>	
 	</div>
@@ -23,8 +29,14 @@
 			</div>	
 
 			<div class="inst">
-				<p>Namn: Amilia <br>
-				Motto: Strong is the new skinny</p>
+					<dl>
+					  <dt>Namn</dt>
+					  <dd>Amilia</dd>
+					</dl>
+					<dl>
+					  <dt>Motto</dt>
+					  <dd>Träna är gött :)</dd>
+					</dl>
 			</div>	
 		</div>	
 	</div>
@@ -37,8 +49,14 @@
 			</div>	
 
 			<div class="inst">
-				<p>Namn: Ellinor <br>
-				Motto: Strong is the new skinny</p>
+					<dl>
+					  <dt>Namn</dt>
+					  <dd>Ellinor</dd>
+					</dl>
+					<dl>
+					  <dt>Motto</dt>
+					  <dd>Träna är gött :)</dd>
+					</dl>
 			</div>	
 		</div>	
 	</div>
@@ -51,8 +69,14 @@
 			</div>	
 
 			<div class="inst">
-				<p>Namn: Conny <br>
-				Motto: Strong is the new skinny</p>
+					<dl>
+					  <dt>Namn</dt>
+					  <dd>Conny</dd>
+					</dl>
+					<dl>
+					  <dt>Motto</dt>
+					  <dd>Träna är gött :)</dd>
+					</dl>
 			</div>	
 		</div>	
 	</div>
@@ -65,8 +89,14 @@
 			</div>	
 
 			<div class="inst">
-				<p>Namn: Ulle <br>
-				Motto: Strong is the new skinny</p>
+					<dl>
+					  <dt>Namn</dt>
+					  <dd>Ulle</dd>
+					</dl>
+					<dl>
+					  <dt>Motto</dt>
+					  <dd>Träna är gött :)</dd>
+					</dl>
 			</div>	
 		</div>	
 	</div>
@@ -79,8 +109,14 @@
 			</div>	
 
 			<div class="inst">
-				<p>Namn: Martin <br>
-				Motto: Strong is the new skinny</p>
+					<dl>
+					  <dt>Namn</dt>
+					  <dd>Martin</dd>
+					</dl>
+					<dl>
+					  <dt>Motto</dt>
+					  <dd>Träna är gött :)</dd>
+					</dl>
 			</div>	
 		</div>	
 	</div>
