@@ -935,9 +935,9 @@ img {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  width: 100% \9;
+  width: 100%;
   max-width: 100%;
-  height: auto;
+  height: 400px;
 }
 .img-rounded {
   border-radius: 20px;
@@ -5889,7 +5889,6 @@ button.close {
   bottom: 20px;
   left: 15%;
   z-index: 10;
-  padding-top: 20px;
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
