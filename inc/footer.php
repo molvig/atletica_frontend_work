@@ -2,8 +2,8 @@
 
     <div class="footer">
     	
-    	<img src="img/atletica_logga.png" class="img-responsive">
-    	<h5><span class="glyphicon glyphicon-earphone"></span> 0340-14703</h5>
+    	<img src="img/atletica_logga.png">
+    	<h4><span class="glyphicon glyphicon-earphone"></span> 0340-14703</h4>
  
     </div>
 

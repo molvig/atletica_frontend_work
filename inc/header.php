@@ -52,7 +52,7 @@
         <li><a href="#">PASS</a></li>
         <li><a href="#">KURSER</a></li>
         <li><a href="#">PT & KOST</a></li>
-        <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Logga in</a></li>
+        <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> MIN SIDA</a></li>
         
 
     <!--  <form class="navbar-form navbar-left" role="search">

@@ -5034,14 +5034,25 @@ a.list-group-item-danger.active:focus {
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
 }
+.panel-title-index {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 24px;
+  color: inherit;
+}
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
   color: inherit;
 }
+.panel-title-index > a {
+  color: inherit;
+}
+
 .panel-title > a {
   color: inherit;
+
 }
 .panel-footer {
   padding: 10px 15px;
@@ -5221,7 +5232,9 @@ a.list-group-item-danger.active:focus {
   color: #333;
   background-color: #f5f5f5;
   border-color: #ddd;
+
 }
+
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
 }
@@ -6227,16 +6240,15 @@ button.close {
 
 
 .open_time {
-background-color: #DF007B;
+/* background-color: #DF007B; */
 
 }
 
 .open_time h4 {
-color: #FFF;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom:10px;
-
+color: #3F3939;
+text-align: center;
+padding-top: 10px;
+padding-bottom:10px;
 }
 
 
@@ -6256,7 +6268,7 @@ background-color: #FFF;
   margin-right: auto;
   padding-bottom: 0;
 }
-.footer h5 {
+.footer h4 {
   text-align: center;
   display: block;
   margin-left: auto;

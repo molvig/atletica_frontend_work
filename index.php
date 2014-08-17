@@ -3,10 +3,10 @@
 
 <!--Visar dagens öppetttider -->
 
-	<a href="oppettider.php" style="text-decoration:none">
+	<a href="kontakt.php" style="text-decoration:none">
     <div class="open_time">
       <h4>
-           <span class="glyphicon glyphicon-time"></span> <?php  echo $day, $time; ?> 
+           Idag har vi öppet <?php echo $time; ?> 
       </h4>
     </div>
   </a>
@@ -16,76 +16,30 @@
 
     <div class="list-group">
       <a href="login.php" class="list-group-item active">
-       BOKA PASS
+       SCHEMA
       </a>
+
       <div class="panel-group" id="accordion">
+         
           <div class="panel panel-default">
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#+$passID" >
             <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                 8.30 Zumba
-                </a>
+              <h4 class="panel-title-index">
+               
+                 TID + PASSNAMN
+                
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse">
+             </a>
+            <div id="$passID" class="panel-collapse collapse">
               <div class="panel-body">
-                Shake that ass!
-          
-          <button type="submit" class="btn btn-default_1">Boka</button>
-       
+                PASSBESKRIVNING
+                  <button type="submit" class="btn btn-default_1">Boka</button>
               </div>
             </div>
           </div>
+         
 
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                9.00 Core 30
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-              Gott för magen.
-              <button type="submit" class="btn btn-default_1">Boka</button>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-               16.15 Cardio Intervall
-              </a>
-            </h4>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">
-              Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-              <button type="submit" class="btn btn-default_1">Boka</button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-               17.00 TRX
-              </a>
-            </h4>
-          </div>
-          <div id="collapseFour" class="panel-collapse collapse">
-            <div class="panel-body">
-              Häng i lianer som en apa!
-              <button type="submit" class="btn btn-default_1">Boka</button>
-            </div>
-          </div>
-        </div>
 
      </div>
     </div> 
