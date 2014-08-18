@@ -10,10 +10,30 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/orbit.css" type="text/css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
 
+
+          <meta name="apple-mobile-web-app-capable" content="yes">
+          <meta name="mobile-web-app-capable" content="yes">
+
+          <meta name="apple-mobile-web-app-title" content="Add to Home">
+          <!--link rel="apple-touch-icon-precomposed" sizes="152x152" href="icon-152x152.png">
+          <link rel="apple-touch-icon-precomposed" sizes="144x144" href="icon-144x144.png">
+          <link rel="apple-touch-icon-precomposed" sizes="120x120" href="icon-120x120.png">
+          <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icon-114x114.png">
+          <link rel="apple-touch-icon-precomposed" sizes="76x76" href="icon-76x76.png">
+          <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icon-72x72.png"-->
+          <link rel="apple-touch-icon-precomposed" href="img/icon-152x152.png">
+
+          <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
+          <script src="js/addtohomescreen.js"></script>
+          <script>
+          addToHomescreen();
+          </script>
     
     
 
@@ -52,7 +72,7 @@
         <li><a href="#">PASS</a></li>
         <li><a href="#">KURSER</a></li>
         <li><a href="#">PT & KOST</a></li>
-        <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> MIN SIDA</a></li>
+        <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
         
 
     <!--  <form class="navbar-form navbar-left" role="search">

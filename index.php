@@ -22,7 +22,7 @@
       <div class="panel-group" id="accordion">
          
           <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#+$passID" >
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#1" >
             <div class="panel-heading">
               <h4 class="panel-title-index">
                
@@ -31,7 +31,7 @@
               </h4>
             </div>
              </a>
-            <div id="$passID" class="panel-collapse collapse">
+            <div id="1" class="panel-collapse collapse">
               <div class="panel-body">
                 PASSBESKRIVNING
                   <button type="submit" class="btn btn-default_1">Boka</button>

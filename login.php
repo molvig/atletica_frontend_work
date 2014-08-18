@@ -3,6 +3,7 @@
 
   <br>
 <br>
+<div class="grid_10 alpha">
     <form class="form-horizontal" role="form" action="minsida.php">
       <div class="form-group">
         <label for="kundnummer" class="col-sm-2 control-label">Kundnummer</label>
@@ -22,7 +23,7 @@
         </div>
       </div>
     </form>
-
+</div>
 
 
 
