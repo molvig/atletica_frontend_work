@@ -71,7 +71,7 @@
         </li>
         <li><a href="#">PASS</a></li>
         <li><a href="#">KURSER</a></li>
-        <li><a href="#">PT & KOST</a></li>
+        <li><a href="pt_kost.php">PT & KOST</a></li>
         <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
         
 

@@ -60,6 +60,11 @@
 
 
 
-
+    <div class="footer">
+      
+      <img src="img/atletica_logga.png">
+      <h4><span class="glyphicon glyphicon-earphone"></span> 0340-14703</h4>
+ 
+    </div>
 
     <?php include("inc/footer.php"); ?>

@@ -1,11 +1,6 @@
 
 
-    <div class="footer">
-    	
-    	<img src="img/atletica_logga.png">
-    	<h4><span class="glyphicon glyphicon-earphone"></span> 0340-14703</h4>
- 
-    </div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

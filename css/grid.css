@@ -27,6 +27,14 @@
 			-moz-box-shadow:    3px 1px 13px 0px rgba(50, 50, 50, 0.1);
 			box-shadow:         3px 1px 13px 0px rgba(50, 50, 50, 0.1);
 			}
+.pt {
+			width: 49%;
+		  	border-radius: 20px;
+			-webkit-box-shadow: 3px 1px 13px 0px rgba(50, 50, 50, 0.1);
+			-moz-box-shadow:    3px 1px 13px 0px rgba(50, 50, 50, 0.1);
+			box-shadow:         3px 1px 13px 0px rgba(50, 50, 50, 0.1);
+			}
+
 
 .grid_1,
 .grid_1a,
@@ -44,6 +52,14 @@
 .grid_11,
 .grid_12,
 .instruktor {
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: block;
+	border-style: solid;
+	border-color: transparent;
+}
+.pt {
 	margin: 0;
 	padding: 0;
 	float: left;
@@ -98,7 +114,9 @@
 .grid_10,
 .grid_11,
 .grid_12,
-.instruktor
+.instruktor,
+.pt
+
  {
     width: 100%;
   }
