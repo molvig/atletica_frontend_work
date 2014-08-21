@@ -54,12 +54,6 @@
 
 
 
-
-
-
-
-
-
     <div class="footer">
       
       <img src="img/atletica_logga.png">
