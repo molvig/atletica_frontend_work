@@ -14,8 +14,8 @@
 					  <dd>Sandra</dd>
 					</dl>
 					<dl>
-					  <dt>Motto</dt>
-					  <dd>Träna är gött :)</dd>
+					  <dt>Var hittar du mig?</dt>
+					  <dd>SomaMove och ibland i receptionen</dd>
 					</dl>
 			</div>	
 		</div>	
@@ -34,7 +34,7 @@
 					  <dd>Amilia</dd>
 					</dl>
 					<dl>
-					  <dt>Motto</dt>
+					  <dt>Var hittar du mig?</dt>
 					  <dd>Träna är gött :)</dd>
 					</dl>
 			</div>	
@@ -54,7 +54,7 @@
 					  <dd>Ellinor</dd>
 					</dl>
 					<dl>
-					  <dt>Motto</dt>
+					  <dt>Var hittar du mig?</dt>
 					  <dd>Träna är gött :)</dd>
 					</dl>
 			</div>	
@@ -74,7 +74,7 @@
 					  <dd>Conny</dd>
 					</dl>
 					<dl>
-					  <dt>Motto</dt>
+					  <dt>Var hittar du mig?</dt>
 					  <dd>Träna är gött :)</dd>
 					</dl>
 			</div>	
@@ -94,7 +94,7 @@
 					  <dd>Ulle</dd>
 					</dl>
 					<dl>
-					  <dt>Motto</dt>
+					  <dt>Var hittar du mig?</dt>
 					  <dd>Träna är gött :)</dd>
 					</dl>
 			</div>	
@@ -114,7 +114,7 @@
 					  <dd>Martin</dd>
 					</dl>
 					<dl>
-					  <dt>Motto</dt>
+					  <dt>Var hittar du mig?</dt>
 					  <dd>Träna är gött :)</dd>
 					</dl>
 			</div>	

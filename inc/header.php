@@ -61,16 +61,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> HEM</a></li>
          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GYMMET<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">BRA ATT VETA<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="instruktorer.php">Instruktörer</a></li>
-            <li><a href="#">länk</a></li>          
+            <li><a href="#">Medlemsinfo</a></li>
+            <li><a href="personal.php">Vi som jobbar här</a></li>
+            <li><a href="kontakt.php">Kontakta oss</a></li>          
           </ul>
         </li>
         <li><a href="#">PASS</a></li>
-        <li><a href="#">KURSER</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">KURSER<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Föreläsningar</a></li> 
+            <li><a href="#">Barn & Tonår</a></li>
+            <li><a href="#">Mamma & baby</a></li>          
+          </ul>
+        </li>
         <li><a href="pt_kost.php">PT & KOST</a></li>
         <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
         
