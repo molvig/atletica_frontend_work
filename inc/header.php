@@ -22,6 +22,9 @@
 
           <meta name="apple-mobile-web-app-title" content="Atletica">
           <link rel="apple-touch-icon-precomposed" href="img/star.png">
+          <meta name="mobile-web-app-title" content="Atletica">
+          <link rel="mobile-touch-icon-precomposed" href="img/star.png">
+          <link rel="icon" sizes="196x196" href="img/star.png">
           <!--link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/star.pngs">
           <!link rel="apple-touch-icon-precomposed" sizes="144x144" href="icon-144x144.png">
           <link rel="apple-touch-icon-precomposed" sizes="120x120" href="icon-120x120.png">
