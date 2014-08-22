@@ -69,28 +69,35 @@
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">OM OSS<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Medlemsinfo</a></li>
             <li><a href="personal.php">Vi som jobbar här</a></li>
-            <li><a href="kontakt.php">Kontakta oss</a></li>          
+            <li><a href="#">Butik</a></li> 
+            <li><a href="kontakt.php">Kontakta oss</a></li>  
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRÄNING<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Gruppträning</a></li> 
-            <li><a href="#">Styrketräning</a></li>
-            <li><a href="#">Konditionsträning</a></li>          
+            <li><a href="#">Personlig träning & Kost</a></li>
+            <li><a href="#">Spinning</a></li>  
+            <li><a href="#">Gym</a></li>  
+            <li><a href="#">Barn & Tonår</a></li>   
+            <li><a href="#">Mamma & Baby</a></li>  
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">KURSER<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">EVENT<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Föreläsningar</a></li> 
-            <li><a href="#">Barn & Tonår</a></li>
-            <li><a href="#">Mamma & baby</a></li>          
+            <li><a href="#">Föreläsningar</a></li>         
           </ul>
         </li>
-        <li><a href="pt_kost.php">PT & KOST</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEDLEMSINFO<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Priser & Medlemskap</a></li>
+            <li><a href="#">Bokningsregler</a></li>          
+          </ul>
+        </li>
         <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
         
 
