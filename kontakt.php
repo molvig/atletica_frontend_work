@@ -1,7 +1,7 @@
 <?php include("inc/header.php"); ?>
 
 <div class="grid_12">
-	<div class="grid_6 alpha">
+	<div class="grid_6">
 		<h3><span class="glyphicon glyphicon-time"></span> ÖPPET </h3>
 		<h4>Må-Tor: 8-22 <br>
 		Fre: 8-20<br>
@@ -12,7 +12,7 @@
 		Lö-Sö: 06-21</h4>
 	</div>
 
-	<div class="grid_5 alpha">
+	<div class="grid_5">
 		<h3><span class="glyphicon glyphicon-comment"></span> KONTAKTA OSS</h3>
 
 		<h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:info@atletica.se?Subject=Hej!" target="_top">

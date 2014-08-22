@@ -3,13 +3,15 @@
   <?php include("inc/menymedlem.php"); ?> 
   </div>
 
-<div class="grid_6">
-Hej Jennie, <br>
-Du har 2st bokade pass.
-</div>
+  <div class="grid_6">
+    <h3> Hej, Jennie</h3>
+      <h4>Du har <strong>2</strong> gruppass bokade</h4>
+  </div>
+
 
 <div class="grid_3">
-Meddelande från Atletica
+<h3> Meddelande från Atletica</h3>
+<p>Vi har erbjudande på att ta med en vän gratis :)</p>
 </div>
 
 

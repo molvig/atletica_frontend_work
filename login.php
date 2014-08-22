@@ -1,14 +1,14 @@
 <?php include('inc/header.php'); ?>
 
 
-  <br>
 <br>
-<div class="grid_10 alpha">
+<br>
+
     <form class="form-horizontal" role="form" action="minsida.php">
       <div class="form-group">
         <label for="kundnummer" class="col-sm-2 control-label">Kundnummer</label>
         <div class="col-sm-4">
-          <input type="tel" class="form-control" id="kundnummer" placeholder="">
+          <input type="tel" class="form-control" id="kundnummer" placeholder="" autofocus>
         </div>
       </div>
       <div class="form-group">
@@ -23,7 +23,8 @@
         </div>
       </div>
     </form>
-</div>
+
+
 
 
 

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     
-    <title>Atletica_frontend</title>
+    <title>Atletica</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -24,13 +24,14 @@
           <link rel="apple-touch-icon-precomposed" href="img/star.png">
           <meta name="mobile-web-app-title" content="Atletica">
           <link rel="mobile-touch-icon-precomposed" href="img/star.png">
-          <link rel="icon" sizes="196x196" href="img/star.png">
-          <!--link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/star.pngs">
-          <!link rel="apple-touch-icon-precomposed" sizes="144x144" href="icon-144x144.png">
-          <link rel="apple-touch-icon-precomposed" sizes="120x120" href="icon-120x120.png">
-          <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icon-114x114.png">
-          <link rel="apple-touch-icon-precomposed" sizes="76x76" href="icon-76x76.png">
-          <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icon-72x72.png"-->
+
+          <link rel="icon" sizes="196x196" href="img/star-196x196.png">
+          <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/star-152x152.png">
+          <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/star-144x144.png">
+          <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/star-120x120.png">
+          <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/star-114x114.png">
+          <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/star-76x76.png">
+          <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/star-72x72.png">
           
 
           <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
@@ -59,7 +60,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">GET STRONGER <br>Than Yesterday</a>
+      <a class="navbar-brand" href="index.php"><img style="width:160px" src="img/Stronger_logo.png"/></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -70,7 +71,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">OM OSS<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="personal.php">Vi som jobbar här</a></li>
-            <li><a href="#">Butik</a></li> 
+            <li><a href="butik.php">Butik</a></li> 
             <li><a href="kontakt.php">Kontakta oss</a></li>  
           </ul>
         </li>
@@ -78,7 +79,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRÄNING<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Gruppträning</a></li> 
-            <li><a href="#">Personlig träning & Kost</a></li>
+            <li><a href="pt_kost.php">Personlig träning & Kost</a></li>
             <li><a href="#">Spinning</a></li>  
             <li><a href="#">Gym</a></li>  
             <li><a href="#">Barn & Tonår</a></li>   

@@ -11,7 +11,7 @@
     </div>
   </a>
 
-<div class="orbit-container">
+<div class="grid_schema">
   <form role="form" action="minsida.php">
 
     <div class="list-group">
@@ -24,10 +24,8 @@
           <div class="panel panel-default">
             <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#1" >
             <div class="panel-heading">
-              <h4 class="panel-title-index">
-               
-                 TID + PASSNAMN
-                
+              <h4 class="panel-title-index">               
+                 TID + PASSNAMN                
               </h4>
             </div>
              </a>
@@ -38,19 +36,11 @@
               </div>
             </div>
           </div>
-         
-
-
      </div>
-    </div> 
 </form>
   </div>  
 
 
-      <br>
-  <br>
-  <br>
-  <br>
 
 
 

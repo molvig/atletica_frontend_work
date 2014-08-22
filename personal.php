@@ -1,5 +1,7 @@
 <?php include("inc/header.php"); ?>
-
+<div class="grid_12">
+<h3> Vi som jobbar här</h3>
+</div>	
 <div class="grid_12">
 	<div class="inst_1">
 
