@@ -1,8 +1,14 @@
+
 <?php include('inc/header.php'); ?>
-	<div class="grid_3">
+<?php $minasida=2; ?>
+<div class="grid_12"> 
+  <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
+<!--  <div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har bara 7 dagar kvar på ditt medlemskap</div>
+  <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-warning-sign"></span> Ditt medlemsskap har gått ut. Kontakta Atletica om du vill förnya.</div> -->
+</div>
+  <div class="grid_12">
   <?php include("inc/menymedlem.php"); ?> 
   </div>
-
 
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
