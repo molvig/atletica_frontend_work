@@ -70,36 +70,36 @@
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">OM OSS<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="personal.php">Vi som jobbar här</a></li>
-            <li><a href="butik.php">Butik</a></li> 
-            <li><a href="kontakt.php">Kontakta oss</a></li>  
+            <li><a href="omoss_personal.php">Vi som jobbar här</a></li>
+            <li><a href="omoss_butik.php">Butik</a></li> 
+            <li><a href="omoss_kontakt.php">Kontakta oss</a></li>  
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRÄNING<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Gruppträning</a></li> 
-            <li><a href="pt_kost.php">Personlig träning & Kost</a></li>
-            <li><a href="#">Spinning</a></li>  
-            <li><a href="#">Gym</a></li>  
-            <li><a href="#">Barn & Tonår</a></li>   
-            <li><a href="#">Mamma & Baby</a></li>  
+            <li><a href="traning_grupptraning.php">Gruppträning</a></li> 
+            <li><a href="traning_pt_kost.php">Personlig träning & Kost</a></li>
+            <li><a href="traning_spinning.php">Spinning</a></li>  
+            <li><a href="traning_gym.php">Gym</a></li>  
+            <li><a href="traning_barn_tonar.php">Barn & Tonår</a></li>   
+            <li><a href="traning_mamma_baby.php">Mamma & Baby</a></li>  
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">EVENT<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Föreläsningar</a></li>         
+            <li><a href="event_forelasningar.php">Föreläsningar</a></li>         
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEDLEMSINFO<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Priser & Medlemskap</a></li>
-            <li><a href="#">Bokningsregler</a></li>          
+            <li><a href="medlemsinfo_priser_medlemskap.php">Priser & Medlemskap</a></li>
+            <li><a href="medlemsinfo_bokningsregler.php">Bokningsregler</a></li>          
           </ul>
         </li>
-        <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
+        <li><a href="minsida_login.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
         
 
     <!--  <form class="navbar-form navbar-left" role="search">

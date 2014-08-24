@@ -3,10 +3,10 @@
 
 <!--Visar dagens öppetttider -->
 
-	<a href="kontakt.php" style="text-decoration:none">
+	<a href="omoss_kontakt.php" style="text-decoration:none">
     <div class="open_time">
       <h4>
-           Idag har vi öppet <?php echo $time; ?> 
+           IDAG HAR VI ÖPPET <?php echo $time; ?> 
       </h4>
     </div>
   </a>
@@ -15,8 +15,8 @@
   <form role="form" action="minsida.php">
 
     <div class="list-group">
-      <a href="login.php" class="list-group-item active">
-       SCHEMA
+      <a href="#" class="list-group-item active">
+       VECKODAG + DATUM
       </a>
 
       <div class="panel-group" id="accordion">

@@ -72,8 +72,8 @@
 }
 
 
-.alpha{margin-left:20px;}
-.omega{margin-right:20px;}
+.alpha{padding-left:20px; padding-right: 10px;}
+.omega{padding-right:10px;}
 
 .container{
 	width: 90%; 

@@ -11,7 +11,7 @@
   </div>
 
 
-<div class="grid_5">
+<div class="grid_5 alpha">
 	 <form role="form" action="#" method="post">
   
     <legend>Personlig information</legend>
@@ -65,7 +65,7 @@
 <legend>Medlemsskap</legend>
         <div class="grid_12"> 
           <div class="grid_6">
-            <label>Har varit medlem sedan
+            <label>Du har varit medlem sedan
              <input type="text" class="form-control" name="startdatum" id="startdatum" value="<?php  ?>" readonly></label>
            </div>
         </div>

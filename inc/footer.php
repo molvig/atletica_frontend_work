@@ -1,4 +1,8 @@
-
+<div class="grid_12">
+    <div class="grid_6">
+      </div>
+    </div> 
+    </div> 
 
 
 

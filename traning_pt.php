@@ -301,14 +301,7 @@
   </div>
    </div>
 
-<div class="grid_12">
 
-
-  <p style="color:white">jkdasjkldasjkldjklsad
-    kjdsaklöasdklöasd <br>
-    kljadsjklsadkjlkjl <br>
-    jkadskjlsadkjl
- </div> 
 <?php include("inc/footer.php"); ?>
 
 

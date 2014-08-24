@@ -11,13 +11,13 @@
   </div>
 
 
-  <div class="grid_6">
+  <div class="grid_6 alpha">
     <h3> Hej, X</h3>
       <h4>Du har <strong>X</strong> gruppass bokade</h4>
   </div>
 
 
-<div class="grid_3">
+<div class="grid_3 alpha">
 <h3> Meddelande från Atletica</h3>
 <p>Vi har erbjudande på att ta med en vän gratis :)</p>
 </div>

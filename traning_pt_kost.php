@@ -26,7 +26,7 @@
 		
 
 				</ul></p>
-            <p><a href="pt.php" class="btn btn-default" role="button">Läs mer om våra PT</a> </p>
+            <p><a href="traning_pt.php" class="btn btn-default" role="button">Läs mer om våra PT</a> </p>
           </div>
         </div>
       </div>
