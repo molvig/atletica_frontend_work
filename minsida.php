@@ -1,4 +1,4 @@
-
+<?php include("inc/db_con.php"); ?>
 <?php include('inc/header.php'); ?>
 <?php $minasida=1; ?>
 <div class="grid_12">	
