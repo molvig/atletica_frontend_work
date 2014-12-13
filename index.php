@@ -50,17 +50,7 @@
   
 <div class="grid_2">
 
-  <script type="text/javascript">
-        $(document).ready(function(){       
-        $('a').click(function(event) {
-            alert("demo only");
-            event.preventDefault();
-
-        }); 
-});
-
-  </script>
-<iframe src="http://widget.websta.me/in/atleticagym/?s=250&w=1&h=1&b=1&p=5" id="insta" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:265px; height: 265px" ></iframe> <!-- websta - web.stagram.com -->
+<iframe src="http://widget.websta.me/in/atleticagym/?s=250&w=1&h=1&b=1&p=5" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:265px; height: 265px" ></iframe> <!-- websta - web.stagram.com -->
 
 
 <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
