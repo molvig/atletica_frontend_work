@@ -131,12 +131,51 @@ else {$install="";}
 	{	
 
 		if 	($antal<$antalplatser){
-			$dagspass .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install. '</a>';
+		$dagspass .=
+		      '<div class="panel-group"'. 'id="accordion">'.
+          '<div class="panel panel-default">'.
+            '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+            '<div class="panel-heading">'.
+              '<h4 class="panel-title-index">'.              
+                 date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.          
+              '</h4>
+            </div>
+             </a>'.
+            '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+              '<div class="panel-body">'.
+                "Fight your pal! ". 
+                  '<button type="submit" '.'class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>';			
+
+
+
+
+
+
+
 			}
 
 		else if ($antal>=$antalplatser){
-			$dagspass .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';
-			}
+			$dagspass .= 
+					      '<div class="panel-group"'. 'id="accordion">'.
+          '<div class="panel panel-default">'.
+            '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+            '<div class="panel-heading">'.
+              '<h4 class="panel-title-index">'.              
+                 date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.  ' <p style="float:right; color:red;">' . "FULLBOKAT! ". "</p>".        
+              '</h4>
+            </div>
+             </a>'.
+            '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+              '<div class="panel-body">'.
+                "Fight your pal! ". 
+                  '<button type="submit" '.'class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>';
+      }
 		}
 
 

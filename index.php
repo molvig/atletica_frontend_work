@@ -15,13 +15,42 @@
   </a>
 
 <div class="grid_schema">
+
   <form role="form" action="minsida.php">
 
     <div class="list-group">
       <a href="#" class="list-group-item active">
-       Måndag 2014-12-08
+       <?php echo $veckodag;?> <?php echo $today;?>
       </a>
 
+    <?php echo $dagspass;?>
+      
+      <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#1234" >
+            <div class="panel-heading">
+              <h4 class="panel-title-index">               
+                 Pass 2              
+              </h4>
+            </div>
+             </a>
+            <div id="1234" class="panel-collapse collapse">
+              <div class="panel-body">
+                Fight your pal! 
+                  <button type="submit" class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>
+     </div>
+
+
+</div>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+       <?php echo $veckodag1;?> <?php echo $oneday;?>
+      </a>
+    
       <div class="panel-group" id="accordion">
          
           <div class="panel panel-default">
@@ -40,7 +69,145 @@
             </div>
           </div>
      </div>
-</form>
+</div>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+       <?php echo $veckodag2;?> <?php echo $twoday;?>
+      </a>
+    
+      <div class="panel-group" id="accordion">
+         
+          <div class="panel panel-default">
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
+            <div class="panel-heading">
+              <h4 class="panel-title-index">               
+                 20:00 Body combat               
+              </h4>
+            </div>
+             </a>
+            <div id="bajs" class="panel-collapse collapse">
+              <div class="panel-body">
+                Fight your pal! 
+                  <button type="submit" class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>
+     </div>
+</div>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+       <?php echo $veckodag3;?> <?php echo $threeday;?>
+      </a>
+    
+      <div class="panel-group" id="accordion">
+         
+          <div class="panel panel-default">
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
+            <div class="panel-heading">
+              <h4 class="panel-title-index">               
+                 20:00 Body combat               
+              </h4>
+            </div>
+             </a>
+            <div id="bajs" class="panel-collapse collapse">
+              <div class="panel-body">
+                Fight your pal! 
+                  <button type="submit" class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>
+     </div>
+</div>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+       <?php echo $veckodag4;?> <?php echo $fourday;?>
+      </a>
+    
+      <div class="panel-group" id="accordion">
+         
+          <div class="panel panel-default">
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
+            <div class="panel-heading">
+              <h4 class="panel-title-index">               
+                 20:00 Body combat               
+              </h4>
+            </div>
+             </a>
+            <div id="bajs" class="panel-collapse collapse">
+              <div class="panel-body">
+                Fight your pal! 
+                  <button type="submit" class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>
+     </div>
+</div>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+       <?php echo $veckodag5;?> <?php echo $fiveday;?>
+      </a>
+    
+      <div class="panel-group" id="accordion">
+         
+          <div class="panel panel-default">
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
+            <div class="panel-heading">
+              <h4 class="panel-title-index">               
+                 20:00 Body combat               
+              </h4>
+            </div>
+             </a>
+            <div id="bajs" class="panel-collapse collapse">
+              <div class="panel-body">
+                Fight your pal! 
+                  <button type="submit" class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+     </div>
+</div>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+       <?php echo $veckodag6;?> <?php echo $sixday;?>
+      </a>
+    
+      <div class="panel-group" id="accordion">
+         
+          <div class="panel panel-default">
+            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
+            <div class="panel-heading">
+              <h4 class="panel-title-index">               
+                 20:00 Body combat               
+              </h4>
+            </div>
+             </a>
+            <div id="bajs" class="panel-collapse collapse">
+              <div class="panel-body">
+                Fight your pal! 
+                  <button type="submit" class="btn btn-default_1">Boka</button>
+              </div>
+            </div>
+          </div>
+     </div>
+</div>
+
+
+  </form>
   </div>  
   </div>
 
@@ -49,6 +216,7 @@
    </div>  
   
 <div class="grid_2">
+<h3>Senaste från Instagram</h3>
 
 <iframe src="http://widget.websta.me/in/atleticagym/?s=250&w=1&h=1&b=1&p=5" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:265px; height: 265px" ></iframe> <!-- websta - web.stagram.com -->
 
