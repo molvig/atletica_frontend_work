@@ -25,24 +25,7 @@
 
     <?php echo $dagspass;?>
       
-      <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#1234" >
-            <div class="panel-heading">
-              <h4 class="panel-title-index">               
-                 Pass 2              
-              </h4>
-            </div>
-             </a>
-            <div id="1234" class="panel-collapse collapse">
-              <div class="panel-body">
-                Fight your pal! 
-                  <button type="submit" class="btn btn-default_1">Boka</button>
-              </div>
-            </div>
-          </div>
-     </div>
-
+</div>
 
 </div>
 
@@ -51,24 +34,9 @@
        <?php echo $veckodag1;?> <?php echo $oneday;?>
       </a>
     
-      <div class="panel-group" id="accordion">
-         
-          <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
-            <div class="panel-heading">
-              <h4 class="panel-title-index">               
-                 20:00 Body combat               
-              </h4>
-            </div>
-             </a>
-            <div id="bajs" class="panel-collapse collapse">
-              <div class="panel-body">
-                Fight your pal! 
-                  <button type="submit" class="btn btn-default_1">Boka</button>
-              </div>
-            </div>
-          </div>
-     </div>
+    <?php echo $dagspass1;?>
+      
+</div>
 </div>
 
     <div class="list-group">
@@ -76,24 +44,9 @@
        <?php echo $veckodag2;?> <?php echo $twoday;?>
       </a>
     
-      <div class="panel-group" id="accordion">
-         
-          <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
-            <div class="panel-heading">
-              <h4 class="panel-title-index">               
-                 20:00 Body combat               
-              </h4>
-            </div>
-             </a>
-            <div id="bajs" class="panel-collapse collapse">
-              <div class="panel-body">
-                Fight your pal! 
-                  <button type="submit" class="btn btn-default_1">Boka</button>
-              </div>
-            </div>
-          </div>
-     </div>
+     <?php echo $dagspass2;?>
+      
+</div>
 </div>
 
     <div class="list-group">
@@ -101,24 +54,9 @@
        <?php echo $veckodag3;?> <?php echo $threeday;?>
       </a>
     
-      <div class="panel-group" id="accordion">
-         
-          <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
-            <div class="panel-heading">
-              <h4 class="panel-title-index">               
-                 20:00 Body combat               
-              </h4>
-            </div>
-             </a>
-            <div id="bajs" class="panel-collapse collapse">
-              <div class="panel-body">
-                Fight your pal! 
-                  <button type="submit" class="btn btn-default_1">Boka</button>
-              </div>
-            </div>
-          </div>
-     </div>
+    <?php echo $dagspass3;?>
+      
+</div>
 </div>
 
     <div class="list-group">
@@ -126,24 +64,9 @@
        <?php echo $veckodag4;?> <?php echo $fourday;?>
       </a>
     
-      <div class="panel-group" id="accordion">
-         
-          <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
-            <div class="panel-heading">
-              <h4 class="panel-title-index">               
-                 20:00 Body combat               
-              </h4>
-            </div>
-             </a>
-            <div id="bajs" class="panel-collapse collapse">
-              <div class="panel-body">
-                Fight your pal! 
-                  <button type="submit" class="btn btn-default_1">Boka</button>
-              </div>
-            </div>
-          </div>
-     </div>
+    <?php echo $dagspass4;?>
+      
+</div>
 </div>
 
     <div class="list-group">
@@ -151,60 +74,22 @@
        <?php echo $veckodag5;?> <?php echo $fiveday;?>
       </a>
     
-      <div class="panel-group" id="accordion">
-         
-          <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
-            <div class="panel-heading">
-              <h4 class="panel-title-index">               
-                 20:00 Body combat               
-              </h4>
-            </div>
-             </a>
-            <div id="bajs" class="panel-collapse collapse">
-              <div class="panel-body">
-                Fight your pal! 
-                  <button type="submit" class="btn btn-default_1">Boka</button>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-     </div>
+    <?php echo $dagspass5;?>
+      
 </div>
+</div>
+
 
     <div class="list-group">
       <a href="#" class="list-group-item active">
        <?php echo $veckodag6;?> <?php echo $sixday;?>
       </a>
     
-      <div class="panel-group" id="accordion">
-         
-          <div class="panel panel-default">
-            <a style="text-decoration:none" data-toggle="collapse" data-parent="#accordion" href="#bajs" >
-            <div class="panel-heading">
-              <h4 class="panel-title-index">               
-                 20:00 Body combat               
-              </h4>
-            </div>
-             </a>
-            <div id="bajs" class="panel-collapse collapse">
-              <div class="panel-body">
-                Fight your pal! 
-                  <button type="submit" class="btn btn-default_1">Boka</button>
-              </div>
-            </div>
-          </div>
-     </div>
+    <?php echo $dagspass6;?>
+      
 </div>
+</div>
+
 
 
   </form>
