@@ -17,12 +17,12 @@
 
 
 <div class="grid_schema">
-       <div style="position:fixed;z-index:10;background-color:white;width:25%;">
+<!--        <div style="position:fixed;z-index:10;background-color:white;width:25%;">
          <h3>VECKANS  SCHEMA</h3>
        </div>
        <br>
         <br>
-         <br>
+         <br> -->
      <form role="form" action="minsida.php">
 
       <div class="list-group">
@@ -89,7 +89,7 @@
     </div>
 
 
-   <!--   <div class="list-group">
+     <div class="list-group">
         <a href="#" class="list-group-item active">
          <?php echo $veckodag6;?> <?php echo date('d/m', strtotime($sixday));?>
         </a>
@@ -98,7 +98,7 @@
 
     </div>
 
-    -->  
+    
 
     </form>
 
@@ -108,21 +108,10 @@
 <div class="grid_5">
 <h1>Välkommen till ATLETICA</h1>
 <h3>Ditt centrala gym i Varberg</h3>
-<p>Vi erbjuder stort utbud av träningsmöjligheter . Gruppträning, Personlig träning, Barndans & Gym.
+<p>Vi har ett stort utbud av träningsmöjligheter. 
+  Här finns träningsmaskiner för alla muskelgrupper och vi erbjuder klasser som spinning, bodypump, zumba, yoga mycket mer! 
+  Vi har även terminskurser för barn och ungdomar.
 </p>
-
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-
-  <div class="fb-like" data-href="https://www.facebook.com/atletica.gym?fref=ts" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-
 
 </div>
 
@@ -132,7 +121,8 @@
 
 <iframe src="http://widget.websta.me/in/atleticagym/?s=250&w=1&h=1&b=1&p=5" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:265px; height: 265px" ></iframe> <!-- websta - web.stagram.com -->
 <br>
-
+<h3>Gilla oss på Facebook</h3>
+<div class="fb-like-box" data-href="https://www.facebook.com/atletica.gym?fref=ts" data-width="265" data-height="265" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
 
 
 </div>
@@ -140,8 +130,9 @@
 
 <div class="footer">
   
-  <img src="img/atletica_logga.png">
-  <h4><span class="glyphicon glyphicon-earphone"></span> 0340-14703</h4>
+  <img src="img/atletica_logga.png">  
+  <h4><span class="glyphicon glyphicon-earphone"></span> 0340-14703 | <span class="glyphicon glyphicon-envelope"></span> info@atletica.se | ©<?php echo date('Y');?> </h4>
+
 
 </div>
 

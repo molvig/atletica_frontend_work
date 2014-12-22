@@ -1,5 +1,8 @@
-
+<?php include('inc/db_con.php'); ?>
 <?php include('inc/header.php'); ?>
+<?php include('inc/get_member.php'); ?>
+
+
 <?php $minasida=3; ?>
 <div class="grid_12"> 
   <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
@@ -20,12 +23,12 @@
 
           <div class="grid_6">
             <label>Medlemsnummer
-              <input type="text" class="form-control" name="kundnr" id="kundnr" value="" readonly></label>
+              <input type="text" class="form-control" name="kundnr" id="kundnr" value="<?php echo $kundnr;?>" readonly></label>
           </div>
 
        <div class="grid_6">
           <label>Personnummer
-            <input type="personnr" class="form-control" name="personnr" id="personr" value="" readonly></label>
+            <input type="personnr" class="form-control" name="personnr" id="personr" value="<?php echo $personnr;?>" readonly></label>
         </div>
 
     </div>
@@ -35,12 +38,12 @@
 
           <div class="grid_6">
             <label>Förnamn
-            	<input type="text" class="form-control" name="fnamn" id="fnamn" value="" readonly></label>
+            	<input type="text" class="form-control" name="fnamn" id="fnamn" value="<?php echo $fnamn;?>" readonly></label>
           </div>
 
           <div class="grid_6">
             <label>Efternamn
-            	<input type="text" class="form-control" name="enamn" id="enamn" value="" readonly></label>
+            	<input type="text" class="form-control" name="enamn" id="enamn" value="<?php echo $enamn;?>" readonly></label>
            </div>
 
        </div>
@@ -49,12 +52,12 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" value='<?php   ?>'></label>
+              <input type="tel" class="form-control" name="phone" id="phone" value="<?php echo $telefon;?>"></label>
           </div>
 
           <div class="grid_6">
             <label>Email
-              <input type="email" class="form-control" name="mail" id="mail" value='<?php  ?>'></label>
+              <input type="email" class="form-control" name="mail" id="mail" value="<?php echo $mail;?>"></label>
            </div>
 
        </div>
@@ -66,7 +69,7 @@
         <div class="grid_12"> 
           <div class="grid_6">
             <label>Du har varit medlem sedan
-             <input type="text" class="form-control" name="startdatum" id="startdatum" value="<?php  ?>" readonly></label>
+             <input type="text" class="form-control" name="startdatum" id="startdatum" value="<?php echo date('Y-m-d', strtotime($medlemsstart)); ?>" readonly></label>
            </div>
         </div>
           <div class="grid_12">
