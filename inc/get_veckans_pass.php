@@ -143,13 +143,13 @@ else {$install="";}
 		if 	($antal<$antalplatser){
 	
 		$dagspass .=
-		      '<div class="panel-group"'. 'id="accordion">'.
+        '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
-              '<h4 class="panel-title-index">'.              
+              '<h5 class="panel-title-index">'.              
                  date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.          
-              '</h4>
+              '</h5>
             </div>
              </a>'.
             '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
@@ -158,7 +158,8 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
-          </div>';			
+          </div>
+        </div>';  		
 
 
 			}
@@ -180,6 +181,7 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
+            </div>
           </div>';
       }
 		}
@@ -197,7 +199,7 @@ else {$install="";}
 		
 		if 	($antal<$antalplatser){
 			$dagspass1 .= 
-					      '<div class="panel-group"'. 'id="accordion">'.
+        '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -212,12 +214,13 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
-          </div>';	
+          </div>
+        </div>';  
 			}
 
 		else if ($antal>=$antalplatser){
 			$dagspass1 .= 
-								      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -231,6 +234,7 @@ else {$install="";}
                 $passbe. 
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
+            </div>
             </div>
           </div>';
 			}
@@ -249,7 +253,7 @@ else {$install="";}
 
 		if 	($antal<$antalplatser){
 			$dagspass2 .= 
-					      '<div class="panel-group"'. 'id="accordion">'.
+        '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -264,12 +268,13 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
-          </div>';	
+          </div>
+        </div>';  
 			}
 
 		else if ($antal>=$antalplatser){
 			$dagspass2 .= 
-								      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -283,6 +288,7 @@ else {$install="";}
                 $passbe. 
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
+            </div>
             </div>
           </div>';
 			}
@@ -300,7 +306,7 @@ else {$install="";}
 
 		if 	($antal<$antalplatser){
 		$dagspass3 .= 
-				      '<div class="panel-group"'. 'id="accordion">'.
+        '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -315,11 +321,13 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
-          </div>';	
+          </div>
+        </div>';  	
 		}
 
 		else if ($antal>=$antalplatser){
-		$dagspass3 .= 					      '<div class="panel-group"'. 'id="accordion">'.
+		$dagspass3 .= 
+                    '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -333,6 +341,7 @@ else {$install="";}
                 $passbe. 
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
+            </div>
             </div>
           </div>';
 
@@ -351,7 +360,7 @@ else {$install="";}
 
 		if 	($antal<$antalplatser){
 		$dagspass4 .= 
-				      '<div class="panel-group"'. 'id="accordion">'.
+        '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -366,12 +375,13 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
-          </div>';	
+          </div>
+        </div>';  	
 		}
 
 		else if ($antal>=$antalplatser){
 		$dagspass4 .= 
-							      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -385,6 +395,7 @@ else {$install="";}
                 $passbe. 
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
+            </div>
             </div>
           </div>';
 		}	
@@ -401,7 +412,7 @@ else {$install="";}
 
 		if 	($antal<$antalplatser){
 		$dagspass5 .= 
-				      '<div class="panel-group"'. 'id="accordion">'.
+				'<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -416,12 +427,13 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
-          </div>';	
+          </div>
+        </div>';	
 		}
 
 		else if ($antal>=$antalplatser){
 		$dagspass5 .= 
-							      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -435,6 +447,7 @@ else {$install="";}
                 $passbe. 
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
+            </div>
             </div>
           </div>';
 		}
@@ -451,7 +464,7 @@ else {$install="";}
 
 		if 	($antal<$antalplatser){
 		$dagspass6 .= 
-				      '<div class="panel-group"'. 'id="accordion">'.
+        '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -466,12 +479,13 @@ else {$install="";}
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
             </div>
-          </div>';	
+          </div>
+        </div>';  
 		}
 
 		else if ($antal>=$antalplatser){
 		$dagspass6 .= 
-							      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel-group"'. 'id="accordion">'.
           '<div class="panel panel-default">'.
             '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
             '<div class="panel-heading">'.
@@ -485,6 +499,7 @@ else {$install="";}
                 $passbe. 
                   '<button type="submit" '.'class="btn btn-default_1">Boka</button>
               </div>
+            </div>
             </div>
           </div>';
 		}

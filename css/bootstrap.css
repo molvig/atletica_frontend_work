@@ -4855,7 +4855,7 @@ a.thumbnail.active {
 }
 .list-group-item {
   position: relative;
-  font-size: 24px;
+  font-size: 18px; /* Schematitel */
   display: block;
   padding: 10px 10px;
   margin-bottom: -1px;
@@ -5048,7 +5048,7 @@ a.list-group-item-danger.active:focus {
 .panel-title-index {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 24px;
+  font-size: 20px; /* Passtitel */
   color: inherit;
 }
 .panel-title {
