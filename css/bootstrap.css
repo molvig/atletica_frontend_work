@@ -18,6 +18,7 @@ html {
 }
 body {
   margin: 0;
+  background-image: url("../img/background_atletica.png"); /* bakgrundsbild*/
 }
 article,
 aside,
@@ -5041,7 +5042,19 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+  color: black;
 }
+.panel-extra {
+  padding: 10px 10px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  background-color: #DF007B;
+  color:#fff;
+}
+
+
+
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
 }
@@ -6273,7 +6286,7 @@ height:60px;
 position:fixed;
 bottom: 0px;
 left:0;
-background-color: #FFF;
+background-color: transparent;
 
 }
 
@@ -6301,7 +6314,7 @@ height:60px;
 position:fixed;
 bottom: 0px;
 left:0;
-background-color: #FFF;
+background-color: transparent;
 
 }
 

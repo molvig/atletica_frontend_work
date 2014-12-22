@@ -15,8 +15,14 @@
   </a>
 
 
-<div class="grid_schema">
 
+<div class="grid_schema">
+       <div style="position:fixed;z-index:10;background-color:white;width:25%;">
+         <h3>VECKANS  SCHEMA</h3>
+       </div>
+       <br>
+        <br>
+         <br>
      <form role="form" action="minsida.php">
 
       <div class="list-group">
@@ -24,17 +30,17 @@
          <?php echo $veckodag;?> <?php echo date('d/m', strtotime($today));?>
         </a>
 
-      <?php echo $dagspass;?>
+      <?php echo $dagspass. "</div>";?>
         
-      </div>
-
+    
+    </div>
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
          <?php echo $veckodag1;?> <?php echo date('d/m', strtotime($oneday));?>
         </a>
       
-      <?php echo $dagspass1;?>
+      <?php echo $dagspass1. "</div>";?>
         
     </div>
 
@@ -44,9 +50,10 @@
          <?php echo $veckodag2;?> <?php echo date('d/m', strtotime($twoday));?>
         </a>
       
-       <?php echo $dagspass2;?>
+       <?php echo $dagspass2. "</div>";?>
         
-      </div>
+
+    </div>
 
 
       <div class="list-group">
@@ -54,9 +61,10 @@
          <?php echo $veckodag3;?> <?php echo date('d/m', strtotime($threeday));?>
         </a>
       
-      <?php echo $dagspass3;?>
+      <?php echo $dagspass3. "</div>";?>
         
-      </div>
+
+    </div>
 
 
       <div class="list-group">
@@ -64,9 +72,10 @@
          <?php echo $veckodag4;?> <?php echo date('d/m', strtotime($fourday));?>
         </a>
       
-      <?php echo $dagspass4;?>
+      <?php echo $dagspass4. "</div>";?>
         
-      </div>
+ 
+    </div>
      
 
       <div class="list-group">
@@ -74,24 +83,26 @@
          <?php echo $veckodag5;?> <?php echo date('d/m', strtotime($fiveday));?>
         </a>
       
-      <?php echo $dagspass5;?>
+      <?php echo $dagspass5. "</div>";?>
         
-      </div>
-    
+
+    </div>
 
 
-      <div class="list-group">
+   <!--   <div class="list-group">
         <a href="#" class="list-group-item active">
          <?php echo $veckodag6;?> <?php echo date('d/m', strtotime($sixday));?>
         </a>
       
-      <?php echo $dagspass6;?>
-        
-      </div>
-      
+      <?php echo $dagspass6. "</div>";?>
+
+    </div>
+
+    -->  
 
     </form>
-</div>  
+
+</div>
 
 
 <div class="grid_5">
