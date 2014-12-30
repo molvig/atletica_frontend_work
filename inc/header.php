@@ -96,12 +96,12 @@
             <li><a href="traning_pt_kost.php">Personlig träning & Kost</a></li>
             <li><a href="traning_spinning.php">Spinning</a></li>  
             <li><a href="traning_gym.php">Gym</a></li>  
-            <li><a href="traning_barn_tonar.php">Barn & Tonår</a></li>   
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">KURSER<b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="traning_barn_tonar.php">Barn & Tonår</a></li>  
             <li><a href="loparskola.php">Löparskola</a></li>  
             <li><a href="traning_mamma_baby.php">Mamma & Baby</a></li>         
           </ul>
