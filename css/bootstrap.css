@@ -18,7 +18,7 @@ html {
 }
 body {
   margin: 0;
-  /*background-image: url("../img/background_atletica.png"); /* bakgrundsbild*/
+  background-image: url("../img/background_atletica.png"); /* bakgrundsbild*/
 }
 article,
 aside,
@@ -5228,7 +5228,7 @@ a.list-group-item-danger.active:focus {
   border: 0;
 }
 .panel-group {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .panel-group .panel {
   margin-bottom: 0;

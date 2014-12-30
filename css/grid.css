@@ -9,9 +9,9 @@
 .grid_1a{ width: 13.2%;}
 .grid_2 { width: 15%; }/*150px*/
 .grid_3 { width: 23.5%; }/*235px*/
-.grid_schema {background-color:white;max-width: 400px; width: 32%; height: 600px; overflow-y: scroll; }/*320px*/
+.grid_schema {width: 32%; height: 600px; overflow-y: scroll; }/*320px*/
 .grid_4 { width: 32%;}/*320px*/
-.inst_1 { width: 24.9%;}/*320px*/
+.inst_1 { width: 32%;}/*320px*/
 .grid_5 { width: 43.5%; }/*405px*/
 .inst { width: 49%; }
 .inst_2{width: 100%;}
@@ -23,6 +23,7 @@
 .grid_11 { width: 91.5%; } /*915px*/
 .grid_12 { width: 100%; }
 .instruktor {
+			background-color: white;
 			width: 100%;
 		  	border-radius: 20px;
 			-webkit-box-shadow: 3px 1px 13px 0px rgba(50, 50, 50, 0.1);

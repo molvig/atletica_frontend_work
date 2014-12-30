@@ -12,9 +12,8 @@ catch (Exception $e) {
 }
 
 //Connects to the database
-
-
 session_start();
+ob_start();
 
 ?>
 

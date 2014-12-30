@@ -1,26 +1,49 @@
 <?php include("inc/db_con.php"); ?>
 <?php include('inc/header.php'); ?>
+<?php include('inc/get_member.php'); ?>
 <?php $minasida=1; ?>
-<div class="grid_12">	
-	<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
-<!--	<div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har bara 7 dagar kvar på ditt medlemskap</div>
-	<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-warning-sign"></span> Ditt medlemsskap har gått ut. Kontakta Atletica om du vill förnya.</div> -->
+
+
+
+<div class="container">
+<div class="row">
+  	<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
 </div>
-	<div class="grid_12">
-  <?php include("inc/menymedlem.php"); ?> 
-  </div>
+<div class="row">
+	<?php include("inc/menymedlem.php"); ?> 
+</div>
+<div class="row">
 
-
-  <div class="grid_6 alpha">
-    <h3> Hej, X</h3>
+    <div class="col-xs-12 col-md-6"> 
+    <a style="text-decoration:none;color:black;" href="logout.php"><h3>  LOGGA UT </h3> </a>	
+    <h3> Hej, <?php echo $fnamn; ?></h3> 
       <h4>Du har <strong>X</strong> gruppass bokade</h4>
+
+     		  <div class="panel panel-default">
+		  	
+		      <table class="table">
+		      <tr>
+
+		        <td><h5>Datum</h5></td>
+		        <td><h5>Passnamn</h5></td>
+		        <td><h5>Avboka</h5></td>
+		      </tr>   
+
+
+		      </table> 
+		
+		  </div>
+  	</div>
+
+    <div class="col-xs-12 col-md-6"> 	
+	<h3> Meddelande från Atletica</h3>
+	<p>Vi har erbjudande på att ta med en vän gratis :)</p>
+  	</div>
+
   </div>
-
-
-<div class="grid_3 alpha">
-<h3> Meddelande från Atletica</h3>
-<p>Vi har erbjudande på att ta med en vän gratis :)</p>
 </div>
+
+
 
 
 

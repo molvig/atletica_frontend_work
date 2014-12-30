@@ -97,13 +97,13 @@
             <li><a href="traning_spinning.php">Spinning</a></li>  
             <li><a href="traning_gym.php">Gym</a></li>  
             <li><a href="traning_barn_tonar.php">Barn & Tonår</a></li>   
-            <li><a href="traning_mamma_baby.php">Mamma & Baby</a></li>  
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">EVENT<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">KURSER<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="event_forelasningar.php">Föreläsningar</a></li>         
+            <li><a href="loparskola.php">Löparskola</a></li>  
+            <li><a href="traning_mamma_baby.php">Mamma & Baby</a></li>         
           </ul>
         </li>
         <li class="dropdown">
@@ -113,7 +113,7 @@
             <li><a href="medlemsinfo_bokningsregler.php">Bokningsregler</a></li>          
           </ul>
         </li>
-        <li><a href="minsida_login.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
+        <li><a href="minsida.php"><span class="glyphicon glyphicon-user"></span> MINA SIDOR</a></li>
         
 
     <!--  <form class="navbar-form navbar-left" role="search">

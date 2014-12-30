@@ -4,21 +4,21 @@
 
 
 <?php $minasida=3; ?>
-<div class="grid_12"> 
-  <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
-<!--  <div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har bara 7 dagar kvar på ditt medlemskap</div>
-  <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-warning-sign"></span> Ditt medlemsskap har gått ut. Kontakta Atletica om du vill förnya.</div> -->
+
+<div class="container">
+<div class="row">
+    <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
 </div>
-  <div class="grid_12">
+<div class="row">
   <?php include("inc/menymedlem.php"); ?> 
-  </div>
+</div>
+<div class="row">
 
-
-<div class="grid_5 alpha">
-	 <form role="form" action="#" method="post">
+    <div class="col-xs-12 col-md-6"> 
+<form role="form" action="#" method="post">
   
-    <legend>Personlig information</legend>
-    <fieldset>
+    <h3>Personlig information</h3>
+    
     <div class="grid_12">
 
           <div class="grid_6">
@@ -38,12 +38,12 @@
 
           <div class="grid_6">
             <label>Förnamn
-            	<input type="text" class="form-control" name="fnamn" id="fnamn" value="<?php echo $fnamn;?>" readonly></label>
+              <input type="text" class="form-control" name="fnamn" id="fnamn" value="<?php echo $fnamn;?>" readonly></label>
           </div>
 
           <div class="grid_6">
             <label>Efternamn
-            	<input type="text" class="form-control" name="enamn" id="enamn" value="<?php echo $enamn;?>" readonly></label>
+              <input type="text" class="form-control" name="enamn" id="enamn" value="<?php echo $enamn;?>" readonly></label>
            </div>
 
        </div>
@@ -61,11 +61,30 @@
            </div>
 
        </div>
+        <?php
+
+        $nyckelkort=1;
+         if ($nyckelkort==1){?>
+              <div class="grid_12">
+              
+                <label>
+                  Detta kort är ett nyckelkort
+                </label>
+             
+            </div>
+      <?php } ?>
 
 
-</fieldset>
-<br>
-<legend>Medlemsskap</legend>
+
+
+     
+        <div class="grid_6">
+          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
+        </div>
+
+</div>
+    <div class="col-xs-12 col-md-6"> 
+<h3>Medlemsskap</h3>
         <div class="grid_12"> 
           <div class="grid_6">
             <label>Du har varit medlem sedan
@@ -76,7 +95,7 @@
            <div class="grid_12">
           <div class="grid_6">
           <label>Korttyp
-             <input type="text" class="form-control" name="korttyp" id="korttyp" value="Klippkort" readonly></label>
+             <input type="text" class="form-control" name="korttyp" id="korttyp" value="<?php echo $korttyp; ?>" readonly></label>
            </div>
             
         <?php
@@ -120,34 +139,22 @@
      </div>
 
 
-        <?php
 
-        $nyckelkort=1;
-         if ($nyckelkort==1){?>
-		          <div class="grid_12">
-		          
-		            <label>
-		              Detta kort är ett nyckelkort
-		            </label>
-		         
-		        </div>
- 			<?php } ?>
-
-
-
-
-     
-        <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
-        </div>
 
 </div>
 
 
     </form>
 
+    </div>
 
+
+
+  </div>
 </div>
+
+
+
 
 
 

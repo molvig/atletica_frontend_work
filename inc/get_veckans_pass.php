@@ -87,637 +87,655 @@ try {
 	//$sql ="SELECT * FROM bokningsbara WHERE datum >= '2014-09-01' AND datum <= '2014-09-07' ORDER BY datum ASC, TIME_FORMAT(starttid, '%H:%i')";
 	$results = $db -> prepare ($sql);
 	$results->execute();
-
-	} 
+  $sc = ($results -> fetchAll(PDO::FETCH_ASSOC));
+  $results->closeCursor();
+   } 
 
 catch (Exception $e) {
 	echo $e;
-}
+  }
 
-
-$sc = ($results -> fetchAll(PDO::FETCH_ASSOC));
-$results->closeCursor();
-
-
-//$datum = date('d/m', strtotime($row['datum']));
 
 	foreach ($sc as $row) 
 {	
 
+  try {
+  	$sql ="SELECT * FROM bokningar, bokningsbara WHERE bokningar.bokningsbarID =  bokningsbara.bokningsbarID AND bokningar.bokningsbarID = {$row['bokningsbarID']} AND reservplats=0";
+    $stmt = $db ->prepare($sql);
+    $stmt->execute();
 
-
-
-
-try {
-	$sql ="SELECT * FROM bokningar, bokningsbara WHERE bokningar.bokningsbarID =  bokningsbara.bokningsbarID AND bokningar.bokningsbarID = {$row['bokningsbarID']} AND reservplats=0";
-  $stmt = $db ->prepare($sql);
-  $stmt->execute();
-
-  $antal = $stmt->rowCount(); 
+    $antal = $stmt->rowCount(); 
 	} 
 
-catch (Exception $e) {
-	echo $e;
-}
+  catch (Exception $e) {
+  	echo $e;
+  }
 
 
+  $antalplatser = $row['antalplatser'];
+  if($row['installt']==1){$install="<strong style='color:#DF007B;'>". " INSTÄLLT!". "</strong>";}
+  else {$install="";}
+  if($row['uppdaterad']==1){$uppdat="<span style='color:#DF007B; font-size:18px;'". 'class="glyphicon glyphicon-flag"></span>';}
+  else {$uppdat="";}
+
+  //Hämtar passinformation
 
 
+  if (date('Y-m-d', strtotime($row['datum'])) == $today){	
+      	$passnamn=$row['passnamn'];
+      	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
+      	$stmt = $db ->prepare($query);
+      	$stmt->execute();
+      	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+      	$stmt->closeCursor(); 
+      	$passbe = $result['passbeskrivning'];
+        
 
-
-$antalplatser = $row['antalplatser'];
-if($row['installt']==1){$install="<strong style='color:#DF007B;'>". " INSTÄLLT!". "</strong>";}
-else {$install="";}
-if($row['uppdaterad']==1){$uppdat="<span style='color:#DF007B; font-size:18px;'". 'class="glyphicon glyphicon-flag"></span>';}
-else {$uppdat="";}
-
-//Hämtar passinformation
-    if (date('Y-m-d', strtotime($row['datum'])) == $today){	
-    	$passnamn=$row['passnamn'];
-    	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
-    	$stmt = $db ->prepare($query);
-    	$stmt->execute();
-    	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
-    	$stmt->closeCursor(); 
-    	$passbe = $result['passbeskrivning'];
-
-      if ($row['installt']==1){
-        $dagspass .= 
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                   '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
-                  '</h5>
-                </div>
-                 </a>'.
-            '</div>';   
-      }   else if($row['extrapass']==1) {
-        $dagspass .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-extra"">'.
-                  '<h5 class="panel-title-index">'.              
-                  '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
+        if ($row['installt']==1){
+          $dagspass .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                     '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
+                    '</h5>
                   </div>
+                   </a>'.
+              '</div>
+              </div>';   
+        }   
+        else if($row['extrapass']==1) {
+          $dagspass .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
+                  </div>
+                </div>
               </div>
-            </div>';  
-
-      } else {
-
-    		if 	($antal<$antalplatser){
-    		$dagspass .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                    $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              </div>';  
+        } 
+        else {
+      		if 	($antal<$antalplatser){
+      		  $dagspass .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
+                    '</h5>
                   </div>
-              </div>
-            </div>';  		
-    			}else if ($antal>=$antalplatser){
-    			$dagspass .= 
-    					      '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h4 class="panel-title-index">'.              
-                    $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
-                  '</h4>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                    </div>
                 </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              </div>';  		
+      		}
+          else if ($antal>=$antalplatser){
+      			$dagspass .= 
+      					      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h4 class="panel-title-index">'.              
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                    '</h4>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
                   </div>
                 </div>
-              </div>';
+                </div>';
           }
+        } 
+  }  
 
-      }  
-    }
-
-
-	if (date('Y-m-d', strtotime($row['datum'])) == $oneday)
-	{		
-			$passnamn=$row['passnamn'];
-			$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
-			$stmt = $db ->prepare($query);
-			$stmt->execute();
-			$result = $stmt->fetch(PDO::FETCH_ASSOC); 
-			$stmt->closeCursor(); 
-			$passbe = $result['passbeskrivning'];
-          if ($row['installt']==1){
-        $dagspass1 .= 
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                   '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
-                  '</h5>
-                </div>
-                 </a>'.
-            '</div>';   
-      }   else if($row['extrapass']==1) {
-        $dagspass1 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-extra"">'.
-                  '<h5 class="panel-title-index">'.              
-                  '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
-                  </div>
-              </div>
-            </div>';  
-
-      } else {
-
-        if  ($antal<$antalplatser){
-        $dagspass1 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                    $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
-                  </div>
-              </div>
-            </div>';      
-          }else if ($antal>=$antalplatser){
+  if (date('Y-m-d', strtotime($row['datum'])) == $oneday){		
+  			$passnamn=$row['passnamn'];
+  			$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
+  			$stmt = $db ->prepare($query);
+  			$stmt->execute();
+  			$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+  			$stmt->closeCursor(); 
+  			$passbe = $result['passbeskrivning'];
+        
+        if ($row['installt']==1){
           $dagspass1 .= 
-                    '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h4 class="panel-title-index">'.              
-                    $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
-                  '</h4>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                     '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
+                    '</h5>
+                  </div>
+                   </a>'.
+              '</div>
+              </div>';  
+        }   
+        else if($row['extrapass']==1) {
+          $dagspass1 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
                   </div>
                 </div>
-              </div>';
-          }
-
-      }  
-    }
-
-
-	if (date('Y-m-d', strtotime($row['datum'])) == $twoday)
-	{		
-
-	$passnamn=$row['passnamn'];
-	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
-	$stmt = $db ->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
-	$stmt->closeCursor(); 
-	$passbe = $result['passbeskrivning'];
-
-      if ($row['installt']==1){
-        $dagspass2 .= 
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                   '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
-                  '</h5>
-                </div>
-                 </a>'.
-            '</div>';   
-      }   else if($row['extrapass']==1) {
-        $dagspass2 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-extra"">'.
-                  '<h5 class="panel-title-index">'.              
-                  '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
-                  </div>
               </div>
-            </div>';  
+              </div>';  
 
-      } else {
-
-        if  ($antal<$antalplatser){
-        $dagspass2 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                    $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+        } 
+        else {
+          if  ($antal<$antalplatser){
+          $dagspass1 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
+                    '</h5>
                   </div>
-              </div>
-            </div>';      
-          }else if ($antal>=$antalplatser){
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                    </div>
+                </div>
+              </div>';      
+            }
+            else if ($antal>=$antalplatser){
+            $dagspass1 .= 
+                      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h4 class="panel-title-index">'.              
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                    '</h4>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+            }
+
+        }  
+  }
+
+  if (date('Y-m-d', strtotime($row['datum'])) == $twoday){		
+      	$passnamn=$row['passnamn'];
+      	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
+      	$stmt = $db ->prepare($query);
+      	$stmt->execute();
+      	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+      	$stmt->closeCursor(); 
+      	$passbe = $result['passbeskrivning'];
+
+        if ($row['installt']==1){
           $dagspass2 .= 
-                    '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h4 class="panel-title-index">'.              
-                    $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
-                  '</h4>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                     '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
+                    '</h5>
+                  </div>
+                   </a>'.
+              '</div>
+              </div>';  
+        }   
+        else if($row['extrapass']==1) {
+          $dagspass2 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
                   </div>
                 </div>
-              </div>';
-          }
+              </div>
+              </div>';   
+        } 
+        else {
+          if  ($antal<$antalplatser){
+            $dagspass2 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                    </div>
+                </div>
+              </div>';      
+            }
+          else if ($antal>=$antalplatser){
+            $dagspass2 .= 
+                      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h4 class="panel-title-index">'.              
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                    '</h4>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+            }
+        } 
+  } 
 
-      }  
-    }
-	if (date('Y-m-d', strtotime($row['datum'])) == $threeday)
-	{
-	$passnamn=$row['passnamn'];
-	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
-	$stmt = $db ->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
-	$stmt->closeCursor(); 
-	$passbe = $result['passbeskrivning'];
+  if (date('Y-m-d', strtotime($row['datum'])) == $threeday)
+  	{
+      	$passnamn=$row['passnamn'];
+      	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
+      	$stmt = $db ->prepare($query);
+      	$stmt->execute();
+      	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+      	$stmt->closeCursor(); 
+      	$passbe = $result['passbeskrivning'];
 
         if ($row['installt']==1){
-        $dagspass3 .= 
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                   '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
-                  '</h5>
-                </div>
-                 </a>'.
-            '</div>';   
-      }   else if($row['extrapass']==1) {
-        $dagspass3 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-extra"">'.
-                  '<h5 class="panel-title-index">'.              
-                  '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
-                  </div>
-              </div>
-            </div>';  
-
-      } else {
-
-        if  ($antal<$antalplatser){
-        $dagspass3 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                    $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
-                  </div>
-              </div>
-            </div>';      
-          }else if ($antal>=$antalplatser){
           $dagspass3 .= 
-                    '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h4 class="panel-title-index">'.              
-                    $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
-                  '</h4>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                     '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
+                    '</h5>
+                  </div>
+                   </a>'.
+              '</div>
+              </div>';   
+        }   
+        else if($row['extrapass']==1) {
+          $dagspass3 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
                   </div>
                 </div>
-              </div>';
-          }
-
-      }  
-    }	if (date('Y-m-d', strtotime($row['datum'])) == $fourday)
-	{	
-	$passnamn=$row['passnamn'];
-	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
-	$stmt = $db ->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
-	$stmt->closeCursor(); 
-	$passbe = $result['passbeskrivning'];
-
-      if ($row['installt']==1){
-        $dagspass4 .= 
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                   '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
-                  '</h5>
-                </div>
-                 </a>'.
-            '</div>';   
-      }   else if($row['extrapass']==1) {
-        $dagspass4 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-extra"">'.
-                  '<h5 class="panel-title-index">'.              
-                  '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
-                  </div>
               </div>
-            </div>';  
-
-      } else {
-
-        if  ($antal<$antalplatser){
-        $dagspass4 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                    $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              </div>';   
+        } 
+        else {
+          if  ($antal<$antalplatser){
+            $dagspass3 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
+                    '</h5>
                   </div>
-              </div>
-            </div>';      
-          }else if ($antal>=$antalplatser){
-          $dagspass4 .= 
-                    '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h4 class="panel-title-index">'.              
-                    $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
-                  '</h4>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                    </div>
                 </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
-                  </div>
-                </div>
-              </div>';
+              </div>';       
           }
+          else if ($antal>=$antalplatser){
+              $dagspass3 .= 
+                      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h4 class="panel-title-index">'.              
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                    '</h4>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+          }
+        } 
+  }
 
-      }  
-    }
-	if (date('Y-m-d', strtotime($row['datum'])) == $fiveday)
-	{	
-	$passnamn=$row['passnamn'];
-	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
-	$stmt = $db ->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
-	$stmt->closeCursor(); 
-	$passbe = $result['passbeskrivning'];
+  if (date('Y-m-d', strtotime($row['datum'])) == $fourday)
+    {	
+      	$passnamn=$row['passnamn'];
+      	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
+      	$stmt = $db ->prepare($query);
+      	$stmt->execute();
+      	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+      	$stmt->closeCursor(); 
+      	$passbe = $result['passbeskrivning'];
 
         if ($row['installt']==1){
-        $dagspass5 .= 
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                   '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
-                  '</h5>
-                </div>
-                 </a>'.
-            '</div>';   
-      }   else if($row['extrapass']==1) {
-        $dagspass5 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-extra"">'.
-                  '<h5 class="panel-title-index">'.              
-                  '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+          $dagspass4 .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                     '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
+                    '</h5>
                   </div>
-              </div>
-            </div>';  
-
-      } else {
-
-        if  ($antal<$antalplatser){
-        $dagspass5 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                    $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                   </a>'.
+              '</div>
+              </div>';    
+        }  
+        else if($row['extrapass']==1) {
+          $dagspass4 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
+                    '</h5>
                   </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
+                  </div>
+                </div>
               </div>
-            </div>';      
-          }else if ($antal>=$antalplatser){
+              </div>';   
+        } 
+        else {
+          if  ($antal<$antalplatser){
+            $dagspass4 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                    </div>
+                </div>
+              </div>';       
+           }
+          else if ($antal>=$antalplatser){
+              $dagspass4 .= 
+                      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h4 class="panel-title-index">'.              
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                    '</h4>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+            }
+        }  
+  }
+  	
+  if (date('Y-m-d', strtotime($row['datum'])) == $fiveday){	
+      	$passnamn=$row['passnamn'];
+      	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
+      	$stmt = $db ->prepare($query);
+      	$stmt->execute();
+      	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+      	$stmt->closeCursor(); 
+      	$passbe = $result['passbeskrivning'];
+
+        if ($row['installt']==1){
           $dagspass5 .= 
-                    '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h4 class="panel-title-index">'.              
-                    $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
-                  '</h4>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                     '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
+                    '</h5>
+                  </div>
+                   </a>'.
+              '</div>
+              </div>';    
+        }   
+        else if($row['extrapass']==1) {
+          $dagspass5 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
                   </div>
                 </div>
-              </div>';
+              </div>
+              </div>';  
+        } 
+        else {
+          if  ($antal<$antalplatser){
+            $dagspass5 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                    </div>
+                </div>
+              </div>';       
           }
-
-      }  
-    }
-	if (date('Y-m-d', strtotime($row['datum'])) == $sixday)
-	{	
-	$passnamn=$row['passnamn'];
-	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
-	$stmt = $db ->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
-	$stmt->closeCursor(); 
-	$passbe = $result['passbeskrivning'];
-      if ($row['installt']==1){
-        $dagspass6 .= 
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                   '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
-                  '</h5>
-                </div>
-                 </a>'.
-            '</div>';   
-      }   else if($row['extrapass']==1) {
-        $dagspass6 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-extra"">'.
-                  '<h5 class="panel-title-index">'.              
-                  '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+          else if ($antal>=$antalplatser){
+            $dagspass5 .= 
+                      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h4 class="panel-title-index">'.              
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                    '</h4>
                   </div>
-              </div>
-            </div>';  
-
-      } else {
-
-        if  ($antal<$antalplatser){
-        $dagspass6 .=
-            '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h5 class="panel-title-index">'.              
-                    $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
-                  '</h5>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
                   </div>
-              </div>
-            </div>';      
-          }else if ($antal>=$antalplatser){
+                </div>
+                </div>';
+          }
+        }  
+  }
+  	
+
+  if (date('Y-m-d', strtotime($row['datum'])) == $sixday){	
+      	$passnamn=$row['passnamn'];
+      	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
+      	$stmt = $db ->prepare($query);
+      	$stmt->execute();
+      	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+      	$stmt->closeCursor(); 
+      	$passbe = $result['passbeskrivning'];
+        if ($row['installt']==1){
           $dagspass6 .= 
-                    '<div class="panel-group"'. 'id="accordion">'.
-              '<div class="panel panel-default">'.
-                '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
-                '<div class="panel-heading">'.
-                  '<h4 class="panel-title-index">'.              
-                    $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
-                  '</h4>
-                </div>
-                 </a>'.
-                '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
-                  '<div class="panel-body">'.
-                    $passbe. 
-                      '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                     '<del>'. '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].'</del>'. $install.          
+                    '</h5>
+                  </div>
+                   </a>'.
+              '</div>
+              </div>';   
+        }   
+        else if($row['extrapass']==1) {
+          $dagspass6 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].          
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-default_1">Boka</button>
                   </div>
                 </div>
-              </div>';
+              </div>
+              </div>';  
+        }
+        else {
+          if  ($antal<$antalplatser){
+           $dagspass6 .=
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      $uppdat. " ".  '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn'].         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                    </div>
+                </div>
+              </div>';       
+          }
+          else if ($antal>=$antalplatser){
+             $dagspass6 .= 
+                      '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h4 class="panel-title-index">'.              
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                    '</h4>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                      $passbe. 
+                        '<button type="submit" '.'name="boka-pass"'.'class="btn btn-default_1">Boka</button>
+                    </div>
+                  </div>
+                </div>
+                </div>';
           }
 
-      }  
-    }
-
+        }  
+  }
+  
 
 }
-
-
-
 ?>
