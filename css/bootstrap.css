@@ -2999,6 +2999,15 @@ fieldset[disabled] .btn-warning.active {
   background-color: #d9534f;
   border-color: #d43f3a;
 }
+.btn-atletica {
+  color: #fff;
+  background-color: #DF007B;
+  border-color: #DF007B;
+}
+
+
+
+
 .btn-danger:hover,
 .btn-danger:focus,
 .btn-danger:active,
