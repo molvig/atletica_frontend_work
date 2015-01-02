@@ -15,7 +15,7 @@
 <div class="row">
 
     <div class="col-xs-12 col-md-6"> 
-<form role="form" action="#" method="post">
+<form role="form" action="" method="post">
   
     <h3>Personlig information</h3>
     
@@ -52,18 +52,17 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" value="<?php echo $telefon;?>"></label>
+              <input type="tel" class="form-control" name="phone" id="phone" value="<?php echo $telefon;?>" onkeypress="return isNumberKey(event)" required></label>
           </div>
 
           <div class="grid_6">
             <label>Email
-              <input type="email" class="form-control" name="mail" id="mail" value="<?php echo $mail;?>"></label>
+              <input type="email" class="form-control" name="mail" id="mail" value="<?php echo $mail;?>" required></label>
            </div>
 
        </div>
         <?php
 
-        $nyckelkort=1;
          if ($nyckelkort==1){?>
               <div class="grid_12">
               
@@ -79,7 +78,9 @@
 
      
         <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
+          <button type="submit" name="uppdatera"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
+       
+       <?php echo $sent; ?>
         </div>
 
 </div>
@@ -100,25 +101,37 @@
             
         <?php
 
-        $klippkort=1;
-         if ($klippkort==1){?>
+
+         if ($kortet=="10"){?>
 
             <div class="grid_6">
             <label>Antal klipp kvar <br>
-              <input type="text" class="form-control" name="giltigt" id="giltigt" value="10" readonly></label>
+              <input type="text" class="form-control" name="antalklipp" id="antalklipp" value="<?php echo $antalklipp; ?>" readonly></label>
             </label>
            </div>
  <?php } ?>
 
+  <?php   if ($kortet=="AG12" || $kortet=="AG24" || $kortet=="AG12+2" || $kortet=="AG24+2" ){?>
 
-
-
-         
-          <div class="grid_6">
-            <label>Gäller till <br>
-              <input type="text" class="form-control" name="giltigt" id="giltigt" value="<?php  ?>" readonly></label>
+            <div class="grid_6">
+            <label>Bindningstid till <br>
+              <input type="text" class="form-control" name="bindningsdatum" id="bindningsdatum" value="<?php echo date('Y-m-d', strtotime($bindningstid)); ?>" readonly></label>
             </label>
            </div>
+ <?php }
+
+
+   else {?>
+
+          <div class="grid_6">
+            <label>Gäller till <br>
+              <input type="text" class="form-control" name="giltigt" id="giltigt" value="<?php echo date('Y-m-d', strtotime($giltigttill));  ?>" readonly></label>
+            </label>
+           </div>
+ <?php } ?>
+
+         
+
 </div>
              </div>
 
@@ -155,7 +168,14 @@
 
 
 
-
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>
 
 
 

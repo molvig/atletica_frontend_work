@@ -22,14 +22,14 @@
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
-         <?php echo $veckodag;?> <?php echo date('d/m', strtotime($today));?>
+         <?php echo $veckodag;?> <?php echo date('j/n', strtotime($today));?>
         </a>
         <?php echo $dagspass;?>
       </div>
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
-         <?php echo $veckodag1;?> <?php echo date('d/m', strtotime($oneday));?>
+         <?php echo $veckodag1;?> <?php echo date('j/n', strtotime($oneday));?>
         </a>
         <?php echo $dagspass1;?>
       </div>
@@ -37,14 +37,14 @@
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
-         <?php echo $veckodag2;?> <?php echo date('d/m', strtotime($twoday));?>
+         <?php echo $veckodag2;?> <?php echo date('j/n', strtotime($twoday));?>
         </a>
         <?php echo $dagspass2;?>  
       </div>
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
-         <?php echo $veckodag3;?> <?php echo date('d/m', strtotime($threeday));?>
+         <?php echo $veckodag3;?> <?php echo date('j/n', strtotime($threeday));?>
         </a>
         <?php echo $dagspass3;?>
       </div>
@@ -52,7 +52,7 @@
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
-         <?php echo $veckodag4;?> <?php echo date('d/m', strtotime($fourday));?>
+         <?php echo $veckodag4;?> <?php echo date('j/n', strtotime($fourday));?>
         </a>
         <?php echo $dagspass4;?>
       </div>
@@ -60,7 +60,7 @@
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
-         <?php echo $veckodag5;?> <?php echo date('d/m', strtotime($fiveday));?>
+         <?php echo $veckodag5;?> <?php echo date('j/n', strtotime($fiveday));?>
         </a>
        <?php echo $dagspass5;?>
       </div>
@@ -68,7 +68,7 @@
 
        <div class="list-group">
           <a href="#" class="list-group-item active">
-           <?php echo $veckodag6;?> <?php echo date('d/m', strtotime($sixday));?>
+           <?php echo $veckodag6;?> <?php echo date('j/n', strtotime($sixday));?>
           </a>
         <?php echo $dagspass6;?>
       </div>

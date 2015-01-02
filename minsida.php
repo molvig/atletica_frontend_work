@@ -17,18 +17,11 @@
 
     <div class="col-xs-12 col-md-6"> 
     <h3> Hej, <?php echo $fnamn; ?></h3> 
-      <h4>Du har <strong>X</strong> gruppass bokade</h4>
+      <h4>Du har <strong><?php echo $antalbokadepass;?></strong> av <?php echo $passantal;?> gruppass bokade</h4>
 
      		  <div class="panel panel-default">
 		  	
-		      <table class="table">
-		      <tr>
-
-		        <td><h5>Datum</h5></td>
-		        <td><h5>Tid</h5></td>
-		        <td><h5>Passnamn</h5></td>
-		        <td><h5>Avboka</h5></td>
-		      </tr>   
+		      <table class="table">  
 
 		      <?php echo $found; ?>
 		      </table> 

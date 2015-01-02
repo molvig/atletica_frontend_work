@@ -1,6 +1,6 @@
 <?php 	
 		$today=date('Y-m-d');
-
+		$antalbokadepass=0;
 
 		$query = "SELECT * FROM bokningar WHERE kundnr = {$login_session} AND passdatum >= '{$today}' order by datum asc";  
 		$stmt = $db ->prepare($query);
@@ -20,7 +20,7 @@
 		$passnamn = ($stmt->fetch(PDO::FETCH_ASSOC)); 
 
 		$found .= "<tr>" . '<form method="post">'.
-			"<td>" .date('d/m', strtotime($row['passdatum'])).
+			"<td>" .date('j/n', strtotime($row['passdatum'])).
 			'<input type="hidden"'. 'name="getkundnrin"'. 'value="' .$row['kundnr']. '">'."</td>" . 
 			"<td>" . date('H:i', strtotime($passnamn['starttid'])) ." - " . date('H:i', strtotime($passnamn['sluttid'])) . "</td>" . 
 			"<td>" . $passnamn['passnamn'] . "</td>" . 

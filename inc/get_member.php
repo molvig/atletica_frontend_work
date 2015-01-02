@@ -2,7 +2,7 @@
 				
 $user_check = $_SESSION['login_user'];
 if(!isset($user_check)){
-	header('Location: minsida_login.php'); // Redirecting To Home Page
+	header('Location: minsida_login.php'); // Kollar om det finns någon medlem inloggad
 }
 
 $kundnr ="";
@@ -18,8 +18,10 @@ $medlemsstart="";
 $passantal="";
 $nyckelkort="";
 $kortet="";
+$sent="";
 
 
+//Hämtar information om medlemmen
 	try{
 		$query = "SELECT * FROM medlemmar WHERE kundnr = {$user_check}";
 		$stmt = $db ->prepare($query);
@@ -37,7 +39,7 @@ $kortet="";
 
 	if(!isset($login_session)){
 	$stmt->closeCursor();
-	header('Location: minsida_login.php'); // Redirecting To Home Page
+	header('Location: minsida_login.php'); 
 	}
 
 
@@ -57,7 +59,7 @@ $kortet="";
 		$mail .= $m['mail'];
 		$anteckning .= $m['anteckning'];
 		$medlemsstart .= $m['medlemsstart'];
-		$passantal.= $m['passantal'];
+		$passantal .= $m['passantal'];
 		$nyckelkort .= $m['nyckelkort'];
 
 
@@ -67,8 +69,11 @@ $kortet="";
 		$kort = $stmt->fetch(PDO::FETCH_ASSOC); 
 		$stmt->closeCursor();
 
-		$kort['kort']=$kortet;
-		echo $kortet;
+		$kortet=$kort['kort'];
+		$fryst=$kort['fryst'];
+		$giltigttill=$kort['giltigttill'];
+		$bindningstid=$kort['bindningsdatum'];
+		$antalklipp=$kort['antalklipp'];
 
 		$query = "SELECT korttyp FROM korttyp WHERE kort = '{$kortet}'";
 		$stmt = $db ->prepare($query);
@@ -80,7 +85,33 @@ $kortet="";
 	}
 
 
+//Uppdatera medlem
 
 
+
+if (isset($_POST['uppdatera'])){
+
+	$nytelefonnr=$_POST['phone'];
+	$nyemail=$_POST['mail'];
+
+	    try {
+       $query = ("UPDATE medlemmar SET telefon=:phone, mail=:mail WHERE kundnr={$kundnr}");
+          $q = $db -> prepare($query);
+          $q-> execute(array(
+                            ':phone'=>$nytelefonnr,
+                            ':mail'=>$nyemail
+
+            ));
+
+           $sent ='<h4>' . 'Din uppgifter är nu sparade!' . '</h4>';
+          echo "<meta http-equiv=\"refresh\" content=\"1;URL='minsida_uppgifter.php'\" />";   
+
+       } 
+
+    catch (Exception $e) {
+
+      $sent='<h4>' . 'Hoppsan! Det gick inte spara de nya uppgifterna... Var snäll och försök igen.' . '</h4>';
+    }
+}
 
 ?>	

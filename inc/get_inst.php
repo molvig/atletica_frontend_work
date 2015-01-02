@@ -1,7 +1,7 @@
 <?php
 
 try{
-			$query = "SELECT * FROM instruk order by fnamn";
+			$query = "SELECT * FROM Instruk order by fnamn";
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC); 

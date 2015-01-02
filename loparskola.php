@@ -23,7 +23,7 @@
   	</div>
   	<h3> </h3>
     <div class="col-xs-12 col-md-6"> 	
-		<img src="img/outdoor.JPG" alt="..." class="img-rounded">
+		<img src="img/outdoor.jpg" alt="..." class="img-rounded">
   	</div>
 
 

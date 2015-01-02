@@ -22,7 +22,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" name="login-member" class="btn btn-default">Logga in</button>
+          <button type="submit" name="login-member" class="btn btn-atletica">Logga in</button>
          <br> <span><?php echo $error; ?></span>
         </div>
          </div>
