@@ -123,6 +123,7 @@ catch (Exception $e) {
 
   if (date('Y-m-d', strtotime($row['datum'])) == $today){	
       	$passnamn=$row['passnamn'];
+        $instruktor=$row['instnamn'];
       	$query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
       	$stmt = $db ->prepare($query);
       	$stmt->execute();
@@ -158,8 +159,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
                         '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -179,8 +185,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>
                     </div>
                     </div>
                 </div>
@@ -199,8 +210,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -245,8 +261,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                  </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>               </div>
                 </div>
               </div>
               </div>';  
@@ -266,8 +287,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                </div>
                     </div>
                 </div>
               </div>';      
@@ -285,8 +311,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                 </div>
                   </div>
                 </div>
                 </div>';
@@ -331,8 +362,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                  </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                 </div>
                 </div>
               </div>
               </div>';   
@@ -351,8 +387,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                   </div>
                     </div>
                 </div>
               </div>';      
@@ -370,8 +411,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                   </div>
                   </div>
                 </div>
                 </div>';
@@ -416,8 +462,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                  </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                </div>
                 </div>
               </div>
               </div>';   
@@ -436,8 +487,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                   </div>
                     </div>
                 </div>
               </div>';       
@@ -455,8 +511,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                  </div>
                   </div>
                 </div>
                 </div>';
@@ -501,8 +562,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                  </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>              </div>
                 </div>
               </div>
               </div>';   
@@ -521,8 +587,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                </div>
                     </div>
                 </div>
               </div>';       
@@ -540,8 +611,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                  </div>
                   </div>
                 </div>
                 </div>';
@@ -585,8 +661,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                  </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>               </div>
                 </div>
               </div>
               </div>';  
@@ -605,8 +686,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                 </div>
                     </div>
                 </div>
               </div>';       
@@ -624,8 +710,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                  </div>
                   </div>
                 </div>
                 </div>';
@@ -669,8 +760,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                  </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>               </div>
                 </div>
               </div>
               </div>';  
@@ -689,8 +785,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                  </div>
                     </div>
                 </div>
               </div>';       
@@ -708,8 +809,13 @@ catch (Exception $e) {
                    </a>'.
                   '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
                     '<div class="panel-body">'.
-                      $passbe. 
-                      '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>                    </div>
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $instruktor. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
+                  </div>                 </div>
                   </div>
                 </div>
                 </div>';

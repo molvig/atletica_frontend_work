@@ -7,7 +7,13 @@
 
 <div class="container">
 <div class="row">
-    <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
+         <div class="grid_12">
+ <?php        echo $fryskort;
+           echo $status;
+           echo $skulden;
+
+ ?>
+   </div>
 </div>
 <div class="row">
   <?php include("inc/menymedlem.php"); ?> 
@@ -78,7 +84,7 @@
 
      
         <div class="grid_6">
-          <button type="submit" name="uppdatera"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
+          <button type="submit" name="uppdatera"  class="btn btn-atletica"><span class="glyphicon glyphicon-refresh"></span> UPPDATERA</button>
        
        <?php echo $sent; ?>
         </div>
@@ -125,7 +131,7 @@
 
           <div class="grid_6">
             <label>Gäller till <br>
-              <input type="text" class="form-control" name="giltigt" id="giltigt" value="<?php echo date('Y-m-d', strtotime($giltigttill));  ?>" readonly></label>
+              <input type="text" class="form-control" name="giltigt" id="giltigt" value="<?php echo $kortgiltigt;  ?>" readonly></label>
             </label>
            </div>
  <?php } ?>

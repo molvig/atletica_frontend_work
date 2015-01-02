@@ -7,7 +7,13 @@
 
 <div class="container">
 <div class="row">
-    <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
+         <div class="grid_12">
+ <?php     echo $fryskort;
+           echo $status;
+           echo $skulden;
+
+ ?>
+   </div>
 </div>
 <div class="row">
   <?php include("inc/menymedlem.php"); ?> 

@@ -8,7 +8,13 @@
 
 <div class="container">
 <div class="row">
-  	<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up"></span> Du har X dagar kvar på ditt medlemskap</div>
+      <div class="grid_12">
+ <?php          echo $fryskort;
+           echo $status;
+           echo $skulden;
+
+ ?>
+   </div>
 </div>
 <div class="row">
 	<?php include("inc/menymedlem.php"); ?> 
@@ -16,7 +22,8 @@
 <div class="row">
 
     <div class="col-xs-12 col-md-6"> 
-    <h3> Hej, <?php echo $fnamn; ?></h3> 
+
+      <h3> <?php echo $hej;?><?php echo $fnamn; ?></h3> 
       <h4>Du har <strong><?php echo $antalbokadepass;?></strong> av <?php echo $passantal;?> gruppass bokade</h4>
 
      		  <div class="panel panel-default">
@@ -30,9 +37,18 @@
   	</div>
 
     <div class="col-xs-12 col-md-6"> 	
-	<h3> Meddelande från Atletica</h3>
-	<p>Vi har erbjudande på att ta med en vän gratis :)</p>
+
+    <?php if ($meddelande != null){?>
+    <div class="bubble">
+      <center>
+    	<h3 style="color:white"> Meddelande från Atletica</h3>
+    	<p style="color:white"> <?php echo $meddelande;?> </p>
+      </center>
+    </div> 
+    <?php } ?>
   	</div>
+
+
   	</div>
 <div class="row">
     <div class="col-xs-12 col-md-6"> 	

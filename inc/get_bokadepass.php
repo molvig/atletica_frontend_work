@@ -24,7 +24,7 @@
 			'<input type="hidden"'. 'name="getkundnrin"'. 'value="' .$row['kundnr']. '">'."</td>" . 
 			"<td>" . date('H:i', strtotime($passnamn['starttid'])) ." - " . date('H:i', strtotime($passnamn['sluttid'])) . "</td>" . 
 			"<td>" . $passnamn['passnamn'] . "</td>" . 
-			"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-default btn-sm"'.'value="Avboka"' .'>'.
+			"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-atletica btn-sm"'.'value="AVBOKA"' .'>'.
   			 "</td>" . '</form>'.
 			"</tr>" ;
 		}

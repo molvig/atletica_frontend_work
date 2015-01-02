@@ -2,6 +2,7 @@
 <?php include("inc/oppettider.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/get_veckans_pass.php"); ?>
+<?php include("inc/get_veckans_pass.php"); ?>
 
 
 <!--Visar dagens öppetttider -->
@@ -18,7 +19,7 @@
 
 
 <div class="grid_schema">
-    <form role="form" action="minsida.php">
+    <form role="form" action="minsida_bokningar.php" method="POST">
 
       <div class="list-group">
         <a href="#" class="list-group-item active">
