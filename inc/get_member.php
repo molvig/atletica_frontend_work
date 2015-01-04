@@ -20,7 +20,7 @@ $nyckelkort="";
 $kortet="";
 $sent="";
 $hej="Hej, ";
-$today=date('m/d');
+$today=date('Y-m-d');
 $fryskort="";
 $status="";
 
@@ -70,10 +70,10 @@ $status="";
 		$day=substr($personnr, 4,6);
 		$month=substr($personnr, 2,2);
 		$birth='2000-'.$month."-".$day;
-		$today=date('d/m');
+		$todaymon=date('d/m');
 		$birthday = date('d/m', strtotime($birth));
 
-		if ($today == $birthday)
+		if ($todaymon == $birthday)
 			{$hej="Grattis på födelsedagen, ";}
 
 
@@ -138,7 +138,8 @@ $status="";
 
 if($giltigttill==null && $kortet != "10"){$giltigttill="no";}
 else if($giltigttill==null && $kortet == "10"){$giltigttill="klipp";}
-	else {$giltigttill = date ('Y-m-d', strtotime($giltigttill));}	
+else {$giltigttill = $giltigttill;}	
+
 	
 
 	if($fryst==1){$daysleft=" Fryst";}
