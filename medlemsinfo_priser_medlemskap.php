@@ -20,7 +20,7 @@
 		    <td style="float:right">525kr</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass</i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning</i></td>
 	  		</tr>
 
 	  		<tr>
@@ -56,7 +56,7 @@
 		    <td style="float:right">275kr/mån</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass</i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning</i></td>
 	  		</tr>
 
 		  	<tr>
@@ -65,7 +65,7 @@
 		    <td style="float:right">325kr/mån</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass</i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning</i></td>
 	  		</tr>
 
 		  	<tr>
@@ -74,7 +74,7 @@
 		    <td style="float:right">199kr/mån</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass Vardagar 8-16 + helger</i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning Vardagar 8-16 + helger</i></td>
 	  		</tr>
 
 		  	<tr>
@@ -83,7 +83,7 @@
 		    <td style="float:right">3400kr</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass</i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning</i></td>
 	  		</tr>
 
 		  	<tr>
@@ -101,7 +101,7 @@
 		    <td style="float:right">2000kr</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass </i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning </i></td>
 	  		</tr>
 
 		  	<tr>
@@ -110,7 +110,7 @@
 		    <td style="float:right">1600kr</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass </i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning </i></td>
 	  		</tr>
 
 		  	<tr>
@@ -119,7 +119,7 @@
 		    <td style="float:right">1600kr</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass </i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning </i></td>
 	  		</tr>
 
 		  	<tr>
@@ -128,7 +128,7 @@
 		    <td style="float:right">275kr/mån</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass </i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning </i></td>
 	  		</tr>
 
 		  	<tr>
@@ -137,7 +137,7 @@
 		    <td style="float:right">775kr</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass </i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning </i></td>
 	  		</tr>
 
 		  	<tr>
@@ -146,7 +146,7 @@
 		    <td style="float:right">100kr</td>
 		  	</tr>
 		  	<tr>
-		  	<td colspan="4"> <i>Gym & Gruppass </i></td>
+		  	<td colspan="4"> <i>Gym & Gruppträning </i></td>
 	  		</tr>
 
 		  	<tr>
