@@ -92,10 +92,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRÄNING<b class="caret"></b></a>
           <ul class="dropdown-menu">
+           <li><a href="traning_gym.php">Gym</a></li>  
             <li><a href="traning_grupptraning.php">Gruppträning</a></li> 
             <li><a href="traning_pt_kost.php">Personlig träning & Kost</a></li>
-            <li><a href="traning_spinning.php">Spinning</a></li>  
-            <li><a href="traning_gym.php">Gym</a></li>  
+          <!--  <li><a href="traning_spinning.php">Spinning</a></li>  -->
           </ul>
         </li>
         <li class="dropdown">
