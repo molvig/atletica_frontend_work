@@ -66,7 +66,7 @@ ath.intl = {
 
 	sv_se: {
 		message: 'För att lägga till denna webbapplikation på hemskärmen: tryck på %icon och därefter <strong>%action</strong>.',
-		action: { ios: 'Lägg till på hemskärmen', android: 'Lägg til på startskärmen', windows: 'fäst på startskärmen' }
+		action: { ios: 'Lägg till på hemskärmen', android: 'Lägg till på startskärmen', windows: 'fäst på startskärmen' }
 	},
 
 	zh_cn: {

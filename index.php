@@ -16,9 +16,10 @@
 
 <div class="container">
   <div class="row">
+  <div class="col-xs-12 col-md-4">
+<h3>Aktuellt schema</h3>
 
-
-<div class="grid_schema">
+<div class="col-xs-12 col-md-12 grid_schema">
     <form role="form" action="minsida_bokningar.php" method="POST">
 
       <div class="list-group">
@@ -77,7 +78,7 @@
    </form>
 
 </div>
-
+</div>
 
 <div class="col-xs-12 col-md-5">
 <h1>Välkommen till ATLETICA</h1>

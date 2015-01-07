@@ -9,7 +9,7 @@
 .grid_1a{ width: 13.2%;}
 .grid_2 { width: 15%; }/*150px*/
 .grid_3 { width: 23.5%; }/*235px*/
-.grid_schema {width: 32%; height: 600px; overflow-y: scroll; }/*320px*/
+.grid_schema {width: 100%; height: 600px; overflow-y: scroll; }/*320px*/
 .grid_4 { width: 32%;}/*320px*/
 .inst_1 { width: 32%;}/*320px*/
 .grid_5 { width: 43.5%; }/*405px*/
@@ -123,6 +123,7 @@
 
  {
     width: 100%;
+    height: 100%;
   }
    @media (max-width: 600px) {
  .inst_1

@@ -144,8 +144,8 @@ else {$giltigttill = $giltigttill;}
 
 	if($fryst==1){$daysleft=" Fryst";}
 	else if ($giltigtfran > $today){$daysleft=" Ej börjat gälla";}
-	else if ($korttyp=="INST"){$daysleft=" Instruktör";}
-	else if (($korttyp=="AG12" || $korttyp=="AG12+2" || $korttyp=="AG24" || $korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
+	else if ($kortet=="INST"){$daysleft=" Instruktör";}
+	else if (($kortet=="AG12" || $kortet=="AG12+2" || $kortet=="AG24" || $kortet=="AG24+2" || $kortet=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
 	else if ($giltigttill == "no"){$daysleft=" Har inget kort";}
 	else if ($giltigttill == "klipp"){$daysleft=" Inget första klipp är gjort";}
 	else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
@@ -160,7 +160,7 @@ else {$giltigttill = $giltigttill;}
        	if ($daysleft=="Ej börjat gälla"){
             $status =  '<div class="alert alert-warning">'.'<span class="glyphicon glyphicon-flag"></span>'.  " Kortet har inte börjat gälla än".'</div>';
            }
-        else if ($daysleft=="Autogiro" || $daysleft>0 || $kortet=="10"){
+        else if ($daysleft=="Autogiro" || $daysleft>0 || $kortet=="10" ||$kortet=="INST"){
             $status=   '<div class="alert alert-success">'.'<span class="glyphicon glyphicon-thumbs-up"></span>'." ". $daysleft.'</div>';
              }
         else if ($fryst==0){
