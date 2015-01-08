@@ -98,7 +98,7 @@ catch (Exception $e) {
 {	
 
   try {
-  	$sql ="SELECT * FROM bokningar, bokningsbara WHERE bokningar.bokningsbarID =  bokningsbara.bokningsbarID AND bokningar.bokningsbarID = {$row['bokningsbarID']} AND reservplats=0";
+  	$sql ="SELECT * FROM bokningar, bokningsbara WHERE bokningar.bokningsbarID =  bokningsbara.bokningsbarID AND bokningar.bokningsbarID = {$row['bokningsbarID']}";
     $stmt = $db ->prepare($sql);
     $stmt->execute();
 
@@ -109,9 +109,9 @@ catch (Exception $e) {
   	echo $e;
   }
 
-
+  $passid = $row['bokningsbarID'];
   $antalplatser = $row['antalplatser'];
-  if($row['installt']==1){$install="<strong style='color:#DF007B;'>". " INSTÄLLT!". "</strong>";}
+  if($row['installt']==1){$install="<strong style='color:#DF007B;float:right'>". " INSTÄLLT!". "</strong>";}
   else {$install="";}
   if($row['uppdaterad']==1){$uppdat="<span style='color:#DF007B; font-size:18px;'". 'class="glyphicon glyphicon-flag"></span>';}
   else {$uppdat="";}
@@ -169,9 +169,11 @@ catch (Exception $e) {
               </div>';  
         } 
         else {
+
+
+               
       		if 	($antal<$antalplatser){
-      		  $dagspass .=
-              '<div class="panel-group"'. 'id="accordion">'.
+      		  $dagspass .= '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
@@ -188,11 +190,10 @@ catch (Exception $e) {
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
                         '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>
-                    </div>
+                  </div>                </div>
                     </div>
                 </div>
-              </div>';  		
+              </div>'; 
       		}
           else if ($antal>=$antalplatser){
       			$dagspass .= 

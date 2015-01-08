@@ -7,7 +7,7 @@
     <div class="col-xs-12 col-md-6"> 	
     <h3>ATLETICAS BARN OCH TONÅRSKURSER</h3>
       <h4>
-		Ända sedan **** har vi på Atletica erbjudit  barn & tonårskurser i dans. 
+		Ända sedan 2001 har vi på Atletica erbjudit  barn & tonårskurser i dans. 
 		Barn- och tonårskurserna pågår i 12 veckor och de finns olika kurser att välja mellan beroende på ålder och svårighetsgrad. 
 		För de allra yngsta innebär kurserna lek och rörelse till musik. 
 		För dem äldre deltagarna innebär det mer koreografi. 

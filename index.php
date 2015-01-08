@@ -83,7 +83,7 @@
 <div class="col-xs-12 col-md-5">
 <h1>Välkommen till ATLETICA</h1>
 <h3>Ditt centrala gym i Varberg</h3>
-<p>Vi har funnits på otto torellss gata sen (1992) ? och här hittar ni oss än idag, vi är ditt gym i centrala Varberg och erbjuder ett stort utbud av träningsmöjligheter. 
+<p>Vi har funnits på otto torellss gata sen 2001 och här hittar ni oss än idag, vi är ditt gym i centrala Varberg och erbjuder ett stort utbud av träningsmöjligheter. 
 Ett välutrustat gym och en( ?uppsjö)? av gruppträningsmöjligheter, vi erbjuder även Personlig träning, kostrådgivning , barndanser , mamma/babyträning och löpkurser. 
 Vi arbetar aktivt med att få kunden i fokus,  på vår anläggning vill vi ha en god träningsanda och trivsam miljö genom att hela tiden utföra förbättringdarbeten och vara lyhörda mot kunden. 
 Välkommen in i värmen !  

@@ -3,6 +3,8 @@
 //BOKA MEDLEM
 
 	if(isset($_POST['submit-medlem'])){
+
+		if(isset($login_session)){
 		
 	    $kundnr = $_POST['bokamedlem'];
 
@@ -31,14 +33,6 @@
 							$bokningar = $stmt->rowCount();
 							$stmt->closeCursor(); 
 
-							$query = "SELECT * FROM skulder WHERE kundnr= {$kundnr}"; 
-							$stmt = $db ->prepare($query);
-							$stmt->execute();
-							$skulder = $stmt->rowCount();
-							$stmt->closeCursor(); 
-
-						if ($skulder < 3){
-
 					if ($bokningar < $passantal){
 						try {
 							 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, passdatum,  gastID) VALUES (:kundnr, :bokningsbarID, :passdatum, :gastID)");
@@ -63,12 +57,11 @@
 					}else {
 
 
-							echo $fnamn. " ".$enamn. " kan bara vara bokad på ". $passantal. " st pass samtidigt!";
+							echo "Du kan bara vara bokad på ". $passantal. " st pass samtidigt!";
 							echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	
 					}
 
-				}else{ echo $fnamn. " ".$enamn. " har 3 skulder som måste lösas innan det går att göra en bokning";
-						echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";}
+				}
 
 			}
 
@@ -80,6 +73,7 @@
 			}
 		}  
 
+	}
 	}
 
 

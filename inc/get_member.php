@@ -99,7 +99,9 @@ $status="";
 
 		if ($kortet=="10" && $giltigttill == null){
 			$kortgiltigt="Inga klipp gjorda";
-		} else if ($giltigttill ==null ) {
+		}else if ($giltigttill ==null && $kortet=="INST"){
+			$kortgiltigt=""; 
+		}else if ($giltigttill ==null ) {
 			$kortgiltigt="Inget kort";
 		}else{
 			$kortgiltigt= date('Y-m-d', strtotime($giltigttill));

@@ -85,7 +85,6 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">OM OSS<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="omoss_personal.php">Vi som jobbar här</a></li>
-            <li><a href="omoss_butik.php">Butik</a></li> 
             <li><a href="omoss_kontakt.php">Kontakta oss</a></li>  
           </ul>
         </li>

@@ -2078,7 +2078,7 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2086,10 +2086,11 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: 4px;
+  font-size: 14px;
   line-height: 1.42857143;
-  vertical-align: top;
-  border-top: 1px solid #ddd;
+  vertical-align: middle;
+  border: 0px solid #ddd;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -2785,6 +2786,20 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+}
+
+.btn-reserv {
+  color: #333;
+  background-color: #C1C1C1;
+  border-color: #ccc;
+  float: right;
+  white-space: normal;
+}
+.btn-boka {
+  color: #DF007B;
+  background-color: #fff;
+  border-color: #ccc;
+  float: right;
 }
 
 .btn-default_1 {
@@ -6373,6 +6388,47 @@ background-color: transparent;
     display: block;
     width: 0;
     z-index: 1;
+}
+
+
+  .bubbles {
+    position: relative;
+    padding-left: 5px;
+    width: auto;
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    background: #DF007B;
+    border: #DF007B solid 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+  .bubbles:after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 58px;
+    border-style: solid;
+    border-width: 0 10px 15px;
+    border-color: #DF007B transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+  .bubbles:before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 58px;
+    border-style: solid;
+    border-width: 0 10px 15px;
+    border-color: #DF007B transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
 }
 
 
