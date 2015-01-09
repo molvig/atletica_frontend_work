@@ -2,8 +2,8 @@
 <?php include('inc/header.php'); ?>
 <?php include('inc/get_member.php'); ?>
 <?php include('inc/skuld.php'); ?>
-
 <?php include('inc/get_bokadepass.php'); ?>
+<?php include('inc/boka.php'); ?>
 <?php $minasida=1; ?>
 
 

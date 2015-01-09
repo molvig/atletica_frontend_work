@@ -2796,6 +2796,12 @@ fieldset[disabled] .btn {
   white-space: normal;
 }
 .btn-boka {
+  color: #fff;
+  background-color: #DF007B;
+  border-color: #DF007B;
+  float: right;
+}
+.btn-avboka {
   color: #DF007B;
   background-color: #fff;
   border-color: #ccc;
@@ -5289,6 +5295,12 @@ a.list-group-item-danger.active:focus {
   color: #333;
   background-color: #f5f5f5;
   border-color: #ddd;
+
+}
+.panel-atletica > .panel-heading {
+  color: #FFF;
+  background-color: #5A5A5A;
+  border-color: #5A5A5A;
 
 }
 

@@ -21,7 +21,7 @@ $query = "SELECT * FROM skulder WHERE kundnr = {$kundnr} ORDER By datum DESC ";
 	 	$starten = date("H:i", strtotime($row['starttid']));
 
 			$found .= "<tr>" .
-			"<td>"  . date('d/m', strtotime($row['datum'])). "</td>" .
+			"<td>"  . date('j/n', strtotime($row['datum'])). "</td>" .
 			"<td>"  . $starten. "</td>" . 
 			"<td>"  . $row['passnamn'].'<input type="hidden"'. 'name="passid"'. 'value="' .$passID. '">' ."</td>" . 
 

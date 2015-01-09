@@ -4,6 +4,7 @@
 <?php include('inc/skuld.php'); ?>
 <?php include('inc/get_pass_bokningsbara.php'); ?>
 <?php include('inc/get_bokadepass.php'); ?>
+<?php include('inc/boka.php'); ?>
 
 <?php $minasida=2; ?>
 
@@ -24,7 +25,7 @@
 <br>
 <div class="row">
 <div class="col-xs-12 col-md-8">
-	<div class="panel panel-default">
+	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag;?> <?php echo date('j/n', strtotime($today));?>
 	  </div>
 		<div class="panel-body">
@@ -32,7 +33,7 @@
 	  </div>
 	</div>	
 <br>
-	<div class="panel panel-default">
+	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag1;?> <?php echo date('j/n', strtotime($oneday));?>
 	  </div>
 	  <div class="panel-body">
@@ -41,7 +42,7 @@
 	 </div>
 	
 <br>
-	<div class="panel panel-default">
+	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag2;?> <?php echo date('j/n', strtotime($twoday));?>
 	  </div>
 	  <div class="panel-body">
@@ -49,7 +50,7 @@
 	  </div>
 	</div>
 <br>
-	<div class="panel panel-default">
+	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag3;?> <?php echo date('j/n', strtotime($threeday));?>
 	  </div>
 	  <div class="panel-body">
@@ -57,7 +58,7 @@
 	  </div>
 	</div>
 <br>
-	<div class="panel panel-default">
+	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag4;?> <?php echo date('j/n', strtotime($fourday));?>
 	  </div>
 	  <div class="panel-body">
@@ -65,7 +66,7 @@
 	  </div>
 	</div>
 <br>
-	<div class="panel panel-default">
+	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag5;?> <?php echo date('j/n', strtotime($fiveday));?>
 	  </div>
 	  <div class="panel-body">
@@ -73,7 +74,7 @@
 	  </div>
 	</div>
 <br>
-	<div class="panel panel-default">
+	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag6;?> <?php echo date('j/n', strtotime($sixday));?>
 	  </div>
 	  <div class="panel-body">

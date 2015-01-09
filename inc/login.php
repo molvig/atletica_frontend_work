@@ -1,11 +1,14 @@
 <?php 
 $error="";
+$kundnr="";
+$personnr="";
 
 if(isset($_POST['login-member'])){
 
-	if (empty($_POST['kundnr'])||empty($_POST['personnr']))
+	if (empty($_POST['kundnr'])||!isset($_POST['personnr']))
 	{
-		$error = "Medlemsnummret eller Personnummret är fel!";
+		$error = "Det ser ut som att du har missat att fylla i kundnummer eller personnummer!";
+
 	}
 
 	else
@@ -13,7 +16,7 @@ if(isset($_POST['login-member'])){
 	{
 	$personnr=$_POST['personnr'];
 	$kundnr=$_POST['kundnr'];
-	}	
+	
 
 
 	try{
@@ -35,11 +38,11 @@ if(isset($_POST['login-member'])){
 		$_SESSION['login_user'] = $kundnr; // Initializing Session
 		header("location: minsida.php"); // Redirecting To Other Page
 		} else {
-		$error = "MEDLEMSNUMMRET eller PERSONNUMMRET är fel!";
+		$error = "Kundnumret eller personnumret är fel. Försök igen! Om du inte får ordning på problemet kontakta Atletica. ";
 		}
 
 
-					
+		}				
 
 }
 

@@ -115,6 +115,8 @@ catch (Exception $e) {
   else {$install="";}
   if($row['uppdaterad']==1){$uppdat="<span style='color:#DF007B; font-size:18px;'". 'class="glyphicon glyphicon-flag"></span>';}
   else {$uppdat="";}
+  $slut="<strong style='float:right'>". " SLUT". "</strong>";
+ 
 
   //Hämtar passinformation
 
@@ -127,9 +129,26 @@ catch (Exception $e) {
       	$result = $stmt->fetch(PDO::FETCH_ASSOC); 
       	$stmt->closeCursor(); 
       	$passbe = $result['passbeskrivning'];
+
+
+
+      if (date('H:i:s', strtotime($row['starttid'])) < date('H:i:s')){
+          $dagspass .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-heading">'.
+                    '<h5 class="panel-title-index">'.              
+                      '<strong style="color:grey">'. date('H:i', strtotime($row['starttid']))." ". $row['passnamn']. $slut  .'</strong>' .        
+                    '</h5>
+                  </div>
+                   </a>'.
+              '</div>
+              </div>'; 
+        } 
         
 
-        if ($row['installt']==1){
+      else if ($row['installt']==1){
           $dagspass .= 
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
