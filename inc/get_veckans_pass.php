@@ -162,7 +162,7 @@ catch (Exception $e) {
               '</div>
               </div>';   
         }   
-        else if($row['extrapass']==1) {
+        else if($row['extrapass']==1 && $antal<$antalplatser) {
           $dagspass .=
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
@@ -180,8 +180,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>
+                      '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>
                   </div>
                 </div>
               </div>
@@ -208,12 +211,43 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                </div>
+                      '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                </div>
                     </div>
                 </div>
               </div>'; 
       		}
+        else if ($row['extrapass']==1 && $antal>=$antalplatser){
+            $dagspass .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+          }
           else if ($antal>=$antalplatser){
       			$dagspass .= 
       					      '<div class="panel-group"'. 'id="accordion">'.
@@ -221,7 +255,7 @@ catch (Exception $e) {
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
                     '<h4 class="panel-title-index">'.              
-                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".        
                     '</h4>
                   </div>
                    </a>'.
@@ -232,8 +266,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
                     </div>
                   </div>
                 </div>
@@ -265,7 +302,7 @@ catch (Exception $e) {
               '</div>
               </div>';  
         }   
-        else if($row['extrapass']==1) {
+        else if($row['extrapass']==1 && $antal<$antalplatser) {
           $dagspass1 .=
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
@@ -283,8 +320,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>               </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>               </div>
                 </div>
               </div>
               </div>';  
@@ -309,12 +349,43 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                </div>
                     </div>
                 </div>
               </div>';      
             }
+        else if ($row['extrapass']==1 && $antal>=$antalplatser){
+            $dagspass1 .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+          }
             else if ($antal>=$antalplatser){
             $dagspass1 .= 
                       '<div class="panel-group"'. 'id="accordion">'.
@@ -322,7 +393,7 @@ catch (Exception $e) {
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
                     '<h4 class="panel-title-index">'.              
-                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".        
                     '</h4>
                   </div>
                    </a>'.
@@ -333,8 +404,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                 </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>                 </div>
                   </div>
                 </div>
                 </div>';
@@ -366,7 +440,7 @@ catch (Exception $e) {
               '</div>
               </div>';  
         }   
-        else if($row['extrapass']==1) {
+        else if($row['extrapass']==1 && $antal<$antalplatser) {
           $dagspass2 .=
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
@@ -384,8 +458,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                 </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                 </div>
                 </div>
               </div>
               </div>';   
@@ -409,12 +486,43 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                   </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                   </div>
                     </div>
                 </div>
               </div>';      
             }
+        else if ($row['extrapass']==1 && $antal>=$antalplatser){
+            $dagspass2 .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+          }
           else if ($antal>=$antalplatser){
             $dagspass2 .= 
                       '<div class="panel-group"'. 'id="accordion">'.
@@ -422,7 +530,7 @@ catch (Exception $e) {
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
                     '<h4 class="panel-title-index">'.              
-                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".        
                     '</h4>
                   </div>
                    </a>'.
@@ -433,8 +541,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                   </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>                   </div>
                   </div>
                 </div>
                 </div>';
@@ -466,7 +577,7 @@ catch (Exception $e) {
               '</div>
               </div>';   
         }   
-        else if($row['extrapass']==1) {
+        else if($row['extrapass']==1 && $antal<$antalplatser) {
           $dagspass3 .=
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
@@ -484,8 +595,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                </div>
                 </div>
               </div>
               </div>';   
@@ -509,11 +623,42 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                   </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                   </div>
                     </div>
                 </div>
               </div>';       
+          }
+        else if ($row['extrapass']==1 && $antal>=$antalplatser){
+            $dagspass3 .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
+                    </div>
+                  </div>
+                </div>
+                </div>';
           }
           else if ($antal>=$antalplatser){
               $dagspass3 .= 
@@ -522,7 +667,7 @@ catch (Exception $e) {
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
                     '<h4 class="panel-title-index">'.              
-                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".        
                     '</h4>
                   </div>
                    </a>'.
@@ -533,8 +678,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                  </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>                  </div>
                   </div>
                 </div>
                 </div>';
@@ -566,7 +714,7 @@ catch (Exception $e) {
               '</div>
               </div>';    
         }  
-        else if($row['extrapass']==1) {
+        else if($row['extrapass']==1 && $antal<$antalplatser) {
           $dagspass4 .=
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
@@ -584,8 +732,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>              </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>              </div>
                 </div>
               </div>
               </div>';   
@@ -609,12 +760,43 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                </div>
                     </div>
                 </div>
               </div>';       
            }
+          else if ($row['extrapass']==1 && $antal>=$antalplatser){
+            $dagspass4 .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
+                    </div>
+                  </div>
+                </div>
+                </div>';
+          }
           else if ($antal>=$antalplatser){
               $dagspass4 .= 
                       '<div class="panel-group"'. 'id="accordion">'.
@@ -622,7 +804,7 @@ catch (Exception $e) {
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
                     '<h4 class="panel-title-index">'.              
-                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".        
                     '</h4>
                   </div>
                    </a>'.
@@ -633,8 +815,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                  </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>                  </div>
                   </div>
                 </div>
                 </div>';
@@ -665,7 +850,7 @@ catch (Exception $e) {
               '</div>
               </div>';    
         }   
-        else if($row['extrapass']==1) {
+        else if($row['extrapass']==1 && $antal<$antalplatser) {
           $dagspass5 .=
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
@@ -683,8 +868,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>               </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>               </div>
                 </div>
               </div>
               </div>';  
@@ -708,11 +896,42 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                 </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                 </div>
                     </div>
                 </div>
               </div>';       
+          }
+        else if ($row['extrapass']==1 && $antal>=$antalplatser){
+            $dagspass5 .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
+                    </div>
+                  </div>
+                </div>
+                </div>';
           }
           else if ($antal>=$antalplatser){
             $dagspass5 .= 
@@ -721,7 +940,7 @@ catch (Exception $e) {
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
                     '<h4 class="panel-title-index">'.              
-                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".        
                     '</h4>
                   </div>
                    </a>'.
@@ -732,8 +951,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                  </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>                  </div>
                   </div>
                 </div>
                 </div>';
@@ -764,7 +986,7 @@ catch (Exception $e) {
               '</div>
               </div>';   
         }   
-        else if($row['extrapass']==1) {
+        else if($row['extrapass']==1 && $antal<$antalplatser) {
           $dagspass6 .=
               '<div class="panel-group"'. 'id="accordion">'.
                 '<div class="panel panel-default">'.
@@ -782,8 +1004,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>               </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>               </div>
                 </div>
               </div>
               </div>';  
@@ -807,11 +1032,42 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                  </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-pass"'. ' class="btn btn-atleticas"'.'value="BOKA">'.
+                      '</form>'.
+                  '</div>                  </div>
                     </div>
                 </div>
               </div>';       
+          }
+        else if ($row['extrapass']==1 && $antal>=$antalplatser){
+            $dagspass6 .= 
+              '<div class="panel-group"'. 'id="accordion">'.
+                '<div class="panel panel-default">'.
+                  '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
+                  '<div class="panel-extra"">'.
+                    '<h5 class="panel-title-index">'.              
+                    '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'." ".   '<strong>'. date('H:i', strtotime($row['starttid'])).'</strong>' ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".         
+                    '</h5>
+                  </div>
+                   </a>'.
+                  '<div id="'.$row['bokningsbarID'].'"'. 'class="panel-collapse collapse">'.
+                    '<div class="panel-body">'.
+                    '<div class="col-xs-8 col-md-8">'.
+                      $passbe. '<br>'.
+                      'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
+                '</div>
+                <div class="class="col-xs-3 col-md-3">'.
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>
+                    </div>
+                  </div>
+                </div>
+                </div>';
           }
           else if ($antal>=$antalplatser){
              $dagspass6 .= 
@@ -820,7 +1076,7 @@ catch (Exception $e) {
                   '<a style="text-decoration:none"' .'data-toggle="collapse"'. 'data-parent="#accordion"' .'href="#'.$row['bokningsbarID']. '" >'.
                   '<div class="panel-heading">'.
                     '<h4 class="panel-title-index">'.              
-                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#DF007B;">' . "FULLT! ". "</p>".        
+                      $uppdat. " ". date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. ' <p style="float:right; color:#000;">' . "FULLT! ". "</p>".        
                     '</h4>
                   </div>
                    </a>'.
@@ -831,8 +1087,11 @@ catch (Exception $e) {
                       'Instruktör: '. '<strong>'. $row['instnamn']. '</strong>'.
                 '</div>
                 <div class="class="col-xs-3 col-md-3">'.
-                        '<button type="submit" '.'name="boka-pass"' .'class="btn btn-atleticas">BOKA</button>
-                  </div>                 </div>
+                     '<form method="post">'.
+                     '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="boka-reserv"'. ' class="btn btn-reserv"'.'value="BOKA RESERV">'.
+                      '</form>'.
+                  '</div>                 </div>
                   </div>
                 </div>
                 </div>';

@@ -13,7 +13,28 @@
 
 		$stmt->closeCursor(); 
 
+
+
 	foreach ($result as $row) {
+		$reserv=$row['reservplats']; 
+        $bokdatum= $row['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$row['bokningsbarID']}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+        else {$reservplats="";}
+
+
 		$query = "SELECT * FROM bokningsbara WHERE bokningsbarID ={$row['bokningsbarID']} ";  
 		$stmt = $db ->prepare($query);
 		$stmt->execute();
@@ -30,7 +51,7 @@
 					"<td>" .date('j/n', strtotime($row['passdatum']))."</td>" . 
 					"<td>" . date('H:i', strtotime($passnamn['starttid'])) ." - " . date('H:i', strtotime($passnamn['sluttid'])) . "</td>" . 
 					"<td>" . $passnamn['passnamn'] . "</td>" . 
-					"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA"' .'>'.
+					"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats .'"' .'>'.
 		  			 "</td>" . '</form>'.
 					"</tr>" ;
 		}
@@ -43,12 +64,11 @@
 					"<td>" .date('j/n', strtotime($row['passdatum']))."</td>" . 
 					"<td>" . date('H:i', strtotime($passnamn['starttid'])) ." - " . date('H:i', strtotime($passnamn['sluttid'])) . "</td>" . 
 					"<td>" . $passnamn['passnamn'] . "</td>" . 
-					"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA"' .'>'.
+					"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats .'"' .'>'.
 		  			 "</td>" . '</form>'.
 					"</tr>" ;
 				}
 				else if ($nowtime > $avbokad) {
-					echo $passnamn['passnamn'] . "-" .$passnamn['datum'] .  "-" .$today . "-". $nowtime." - ".$avbokad. "<br>";
 
 				$found .= "<tr>" . 
 					"<td>" .date('j/n', strtotime($row['passdatum']))."</td>" . 

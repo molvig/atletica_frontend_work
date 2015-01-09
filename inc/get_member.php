@@ -87,6 +87,7 @@ $status="";
 		$fryst=$kort['fryst'];
 		$giltigttill=$kort['giltigttill'];
 		$giltigtfran=$kort['giltigtfran'];
+		$ag_aktivt=$kort['ag_aktivt'];
 
 		$bindningstid=$kort['bindningsdatum'];
 

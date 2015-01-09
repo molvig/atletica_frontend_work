@@ -129,6 +129,23 @@ catch (Exception $e) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC); 
         $bokad = $stmt->rowCount(); 
         $stmt->closeCursor();
+        $reserv=$result['reservplats']; 
+        $bokdatum= $result['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+         else {$reservplats="";}
          
 
         $query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
@@ -198,8 +215,9 @@ catch (Exception $e) {
                       '</div>'. 
                       '<div class="col-xs-5 col-md-5">'. 
                       '<form method="post">'.
-                      '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-                      '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
                       '</form>'.
                        '</div>'.
                       '<div class="col-xs-12 col-md-12">'. 
@@ -227,8 +245,9 @@ catch (Exception $e) {
                       '</div>'. 
                       '<div class="col-xs-5 col-md-5">'. 
                       '<form method="post">'.
-                      '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-                      '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
                       '</form>'.
                        '</div>'.
                       '<div class="col-xs-12 col-md-12">'. 
@@ -252,8 +271,6 @@ catch (Exception $e) {
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
                         '<div class="col-xs-5 col-md-5">'. 
-                        '<form method="post">'.
-                        '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -288,7 +305,8 @@ catch (Exception $e) {
                 '</div>'. 
                 '<div class="col-xs-5 col-md-5">'. 
                 '<form method="post">'.
-                '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
+                '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
                 '<input type="submit"'.' name="boka-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
                 '</form>'.
                  '</div>'.
@@ -316,7 +334,8 @@ catch (Exception $e) {
                 '</div>'. 
                 '<div class="col-xs-5 col-md-5">'. 
                 '<form method="post">'.
-                '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
+                '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
                 '<input type="submit"'.' name="reserv-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
                 '</form>'.
                  '</div>'.
@@ -333,6 +352,32 @@ catch (Exception $e) {
 
   if (date('Y-m-d', strtotime($row['datum'])) == $oneday){ 
         $passnamn=$row['passnamn'];
+        $passid = $row['bokningsbarID'];
+
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND kundnr ='{$login_session}'";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $bokad = $stmt->rowCount(); 
+        $stmt->closeCursor();
+        $reserv=$result['reservplats']; 
+        $bokdatum= $result['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+            else {$reservplats="";}
+
         $query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
         $stmt = $db ->prepare($query);
         $stmt->execute();
@@ -340,8 +385,7 @@ catch (Exception $e) {
         $stmt->closeCursor(); 
         $passbe = $row['information'];
         
-
-        if ($row['installt']==1){
+       if (date('Y-m-d', strtotime($row['datum'])) == $today && date('H:i:s', strtotime($row['starttid'])) < date('H:i:s')){
           $dagspass1 .= 
             '<div class="row">'.
             '<div class="col-xs-2 col-md-2">'. 
@@ -354,68 +398,215 @@ catch (Exception $e) {
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
               '<div class="col-xs-5 col-md-5">'. 
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
+               '</div>'.
+              '</div>'; 
+        } 
+        else if ($row['installt']==1){
+          $dagspass1 .= 
+            '<div class="row">'.
+            '<div class="col-xs-2 col-md-2">'. 
+             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+             '</div>'. 
+             '<div class="col-xs-3 col-md-3">'. 
+              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+              '</div>'. 
+              '<div class="col-xs-2 col-md-2">'. 
+              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+              '</div>'. 
+              '<div class="col-xs-5 col-md-5">'. 
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
         }   
+ 
         else {
+
+          if($bokad==1) {
+            $today= date('Y-m-d');
+            $nowtime = date('H:i:s');
+            $avbokad = date('H:i:s', strtotime($row['starttid'] . ' - 120 minute'));
+
+
+           if ($row['datum'] > $today){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass1 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+            }
+
+          if ($row['datum'] == $today){
+
+              if ($nowtime <= $avbokad){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass1 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+              }
+              else if ($nowtime > $avbokad) {
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";}                 
+                $dagspass1 .=
+                      '<div class="row">'.
+                      '<div class="col-xs-2 col-md-2">'. 
+                       '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                       '</div>'. 
+                       '<div class="col-xs-3 col-md-3">'. 
+                        '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-2 col-md-2">'. 
+                        '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-5 col-md-5">'. 
+                        '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
+                        '</form>'.
+                         '</div>'.
+                        '<div class="col-xs-12 col-md-12">'. 
+                          $info. 
+                        '</div>'.
+                        '</div>' ;
+              }
+            }
+
+            
+
+
+          }
+          else if($bokad==0){
+         
           if  ($antal<$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass1 .=
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
-              '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
-   
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+
+              $dagspass1 .=
+                '<div class="row">'.
+                '<div class="col-xs-2 col-md-2">'. 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="boka-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
           else if ($antal>=$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass1 .=
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+            
+             $dagspass1 .=
 
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
+              '<div class="row">'.
               '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="reserv-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
         } 
+    }
+
   } 
 
   if (date('Y-m-d', strtotime($row['datum'])) == $twoday){ 
         $passnamn=$row['passnamn'];
+        $passid = $row['bokningsbarID'];
+
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND kundnr ='{$login_session}'";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $bokad = $stmt->rowCount(); 
+        $stmt->closeCursor();
+        $reserv=$result['reservplats']; 
+        $bokdatum= $result['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+            else {$reservplats="";}
+
         $query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
         $stmt = $db ->prepare($query);
         $stmt->execute();
@@ -423,8 +614,7 @@ catch (Exception $e) {
         $stmt->closeCursor(); 
         $passbe = $row['information'];
         
-
-        if ($row['installt']==1){
+       if (date('Y-m-d', strtotime($row['datum'])) == $today && date('H:i:s', strtotime($row['starttid'])) < date('H:i:s')){
           $dagspass2 .= 
             '<div class="row">'.
             '<div class="col-xs-2 col-md-2">'. 
@@ -437,16 +627,12 @@ catch (Exception $e) {
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
               '<div class="col-xs-5 col-md-5">'. 
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
-        }   
-        else {
-          if  ($antal<$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass2 .=
-
+        } 
+        else if ($row['installt']==1){
+          $dagspass2 .= 
             '<div class="row">'.
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
@@ -458,46 +644,197 @@ catch (Exception $e) {
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
               '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
-              '</form>'.
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
-   
+              '</div>'; 
+        }   
+ 
+        else {
+
+          if($bokad==1) {
+            $today= date('Y-m-d');
+            $nowtime = date('H:i:s');
+            $avbokad = date('H:i:s', strtotime($row['starttid'] . ' - 120 minute'));
+
+
+           if ($row['datum'] > $today){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass2 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+            }
+
+          if ($row['datum'] == $today){
+
+              if ($nowtime <= $avbokad){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass2 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+              }
+              else if ($nowtime > $avbokad) {
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";}                 
+                $dagspass2 .=
+                      '<div class="row">'.
+                      '<div class="col-xs-2 col-md-2">'. 
+                       '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                       '</div>'. 
+                       '<div class="col-xs-3 col-md-3">'. 
+                        '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-2 col-md-2">'. 
+                        '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-5 col-md-5">'. 
+                        '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
+                        '</form>'.
+                         '</div>'.
+                        '<div class="col-xs-12 col-md-12">'. 
+                          $info. 
+                        '</div>'.
+                        '</div>' ;
+              }
+            }
+
+            
+
+
+          }
+          else if($bokad==0){
+         
+          if  ($antal<$antalplatser){
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+
+              $dagspass2 .=
+                '<div class="row">'.
+                '<div class="col-xs-2 col-md-2">'. 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="boka-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
           else if ($antal>=$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass2 .=
-             '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+            
+             $dagspass2 .=
+
+              '<div class="row">'.
               '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="reserv-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
         } 
+    }
+
   } 
   if (date('Y-m-d', strtotime($row['datum'])) == $threeday){ 
         $passnamn=$row['passnamn'];
+        $passid = $row['bokningsbarID'];
+
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND kundnr ='{$login_session}'";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $bokad = $stmt->rowCount(); 
+        $stmt->closeCursor();
+        $reserv=$result['reservplats']; 
+        $bokdatum= $result['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+            else {$reservplats="";}
+
         $query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
         $stmt = $db ->prepare($query);
         $stmt->execute();
@@ -505,8 +842,7 @@ catch (Exception $e) {
         $stmt->closeCursor(); 
         $passbe = $row['information'];
         
-
-        if ($row['installt']==1){
+       if (date('Y-m-d', strtotime($row['datum'])) == $today && date('H:i:s', strtotime($row['starttid'])) < date('H:i:s')){
           $dagspass3 .= 
             '<div class="row">'.
             '<div class="col-xs-2 col-md-2">'. 
@@ -519,68 +855,214 @@ catch (Exception $e) {
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
               '<div class="col-xs-5 col-md-5">'. 
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
+               '</div>'.
+              '</div>'; 
+        } 
+        else if ($row['installt']==1){
+          $dagspass3 .= 
+            '<div class="row">'.
+            '<div class="col-xs-2 col-md-2">'. 
+             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+             '</div>'. 
+             '<div class="col-xs-3 col-md-3">'. 
+              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+              '</div>'. 
+              '<div class="col-xs-2 col-md-2">'. 
+              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+              '</div>'. 
+              '<div class="col-xs-5 col-md-5">'. 
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
         }   
+ 
         else {
-          if  ($antal<$antalplatser){
-             if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass3 .=
 
+          if($bokad==1) {
+            $today= date('Y-m-d');
+            $nowtime = date('H:i:s');
+            $avbokad = date('H:i:s', strtotime($row['starttid'] . ' - 120 minute'));
+
+
+           if ($row['datum'] > $today){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass3 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+            }
+
+          if ($row['datum'] == $today){
+
+              if ($nowtime <= $avbokad){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass3 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+              }
+              else if ($nowtime > $avbokad) {
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";}                 
+                $dagspass3 .=
+                      '<div class="row">'.
+                      '<div class="col-xs-2 col-md-2">'. 
+                       '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                       '</div>'. 
+                       '<div class="col-xs-3 col-md-3">'. 
+                        '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-2 col-md-2">'. 
+                        '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-5 col-md-5">'. 
+                        '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
+                        '</form>'.
+                         '</div>'.
+                        '<div class="col-xs-12 col-md-12">'. 
+                          $info. 
+                        '</div>'.
+                        '</div>' ;
+              }
+            }
+
+            
+
+
+          }
+          else if($bokad==0){
+         
+          if  ($antal<$antalplatser){
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+
+              $dagspass3 .=
                 '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
-              '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
-   
+                '<div class="col-xs-2 col-md-2">'. 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="boka-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
           else if ($antal>=$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass3 .=
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+            
+             $dagspass3 .=
 
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
+              '<div class="row">'.
               '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="reserv-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
         } 
-  } 
-  if (date('Y-m-d', strtotime($row['datum'])) == $fourday){ 
+    }
+
+  }  
+ if (date('Y-m-d', strtotime($row['datum'])) == $fourday){ 
         $passnamn=$row['passnamn'];
+        $passid = $row['bokningsbarID'];
+
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND kundnr ='{$login_session}'";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $bokad = $stmt->rowCount(); 
+        $stmt->closeCursor();
+        $reserv=$result['reservplats']; 
+        $bokdatum= $result['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+           else {$reservplats="";} 
+
         $query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
         $stmt = $db ->prepare($query);
         $stmt->execute();
@@ -588,10 +1070,9 @@ catch (Exception $e) {
         $stmt->closeCursor(); 
         $passbe = $row['information'];
         
-
-        if ($row['installt']==1){
+       if (date('Y-m-d', strtotime($row['datum'])) == $today && date('H:i:s', strtotime($row['starttid'])) < date('H:i:s')){
           $dagspass4 .= 
-             '<div class="row">'.
+            '<div class="row">'.
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
@@ -602,67 +1083,214 @@ catch (Exception $e) {
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
               '<div class="col-xs-5 col-md-5">'. 
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
+               '</div>'.
+              '</div>'; 
+        } 
+        else if ($row['installt']==1){
+          $dagspass4 .= 
+            '<div class="row">'.
+            '<div class="col-xs-2 col-md-2">'. 
+             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+             '</div>'. 
+             '<div class="col-xs-3 col-md-3">'. 
+              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+              '</div>'. 
+              '<div class="col-xs-2 col-md-2">'. 
+              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+              '</div>'. 
+              '<div class="col-xs-5 col-md-5">'. 
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
         }   
+ 
         else {
-          if  ($antal<$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass4 .=
 
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
-              '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
-   
+          if($bokad==1) {
+            $today= date('Y-m-d');
+            $nowtime = date('H:i:s');
+            $avbokad = date('H:i:s', strtotime($row['starttid'] . ' - 120 minute'));
+
+
+           if ($row['datum'] > $today){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass4 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+            }
+
+          if ($row['datum'] == $today){
+
+              if ($nowtime <= $avbokad){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass4 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+              }
+              else if ($nowtime > $avbokad) {
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";}                 
+                $dagspass4 .=
+                      '<div class="row">'.
+                      '<div class="col-xs-2 col-md-2">'. 
+                       '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                       '</div>'. 
+                       '<div class="col-xs-3 col-md-3">'. 
+                        '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-2 col-md-2">'. 
+                        '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-5 col-md-5">'. 
+                        '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
+                        '</form>'.
+                         '</div>'.
+                        '<div class="col-xs-12 col-md-12">'. 
+                          $info. 
+                        '</div>'.
+                        '</div>' ;
+              }
+            }
+
+            
+
+
+          }
+          else if($bokad==0){
+         
+          if  ($antal<$antalplatser){
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+
+              $dagspass4 .=
+                '<div class="row">'.
+                '<div class="col-xs-2 col-md-2">'. 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="boka-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
           else if ($antal>=$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass4 .=
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+            
+             $dagspass4 .=
+
+              '<div class="row">'.
               '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="reserv-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
         } 
+    }
+
   } 
-  if (date('Y-m-d', strtotime($row['datum'])) == $fiveday){ 
+ if (date('Y-m-d', strtotime($row['datum'])) == $fiveday){ 
         $passnamn=$row['passnamn'];
+        $passid = $row['bokningsbarID'];
+
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND kundnr ='{$login_session}'";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $bokad = $stmt->rowCount(); 
+        $stmt->closeCursor();
+        $reserv=$result['reservplats']; 
+        $bokdatum= $result['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+           else {$reservplats="";} 
+
         $query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
         $stmt = $db ->prepare($query);
         $stmt->execute();
@@ -670,10 +1298,9 @@ catch (Exception $e) {
         $stmt->closeCursor(); 
         $passbe = $row['information'];
         
-
-        if ($row['installt']==1){
+       if (date('Y-m-d', strtotime($row['datum'])) == $today && date('H:i:s', strtotime($row['starttid'])) < date('H:i:s')){
           $dagspass5 .= 
-             '<div class="row">'.
+            '<div class="row">'.
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
@@ -684,66 +1311,214 @@ catch (Exception $e) {
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
               '<div class="col-xs-5 col-md-5">'. 
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
+               '</div>'.
+              '</div>'; 
+        } 
+        else if ($row['installt']==1){
+          $dagspass5 .= 
+            '<div class="row">'.
+            '<div class="col-xs-2 col-md-2">'. 
+             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+             '</div>'. 
+             '<div class="col-xs-3 col-md-3">'. 
+              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+              '</div>'. 
+              '<div class="col-xs-2 col-md-2">'. 
+              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+              '</div>'. 
+              '<div class="col-xs-5 col-md-5">'. 
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
         }   
+ 
         else {
+
+          if($bokad==1) {
+            $today= date('Y-m-d');
+            $nowtime = date('H:i:s');
+            $avbokad = date('H:i:s', strtotime($row['starttid'] . ' - 120 minute'));
+
+
+           if ($row['datum'] > $today){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass5 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+            }
+
+          if ($row['datum'] == $today){
+
+              if ($nowtime <= $avbokad){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass5 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+              }
+              else if ($nowtime > $avbokad) {
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";}                 
+                $dagspass5 .=
+                      '<div class="row">'.
+                      '<div class="col-xs-2 col-md-2">'. 
+                       '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                       '</div>'. 
+                       '<div class="col-xs-3 col-md-3">'. 
+                        '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-2 col-md-2">'. 
+                        '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-5 col-md-5">'. 
+                        '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
+                        '</form>'.
+                         '</div>'.
+                        '<div class="col-xs-12 col-md-12">'. 
+                          $info. 
+                        '</div>'.
+                        '</div>' ;
+              }
+            }
+
+            
+
+
+          }
+          else if($bokad==0){
+         
           if  ($antal<$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass5 .=
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
-              '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
-   
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+
+              $dagspass5 .=
+                '<div class="row">'.
+                '<div class="col-xs-2 col-md-2">'. 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="boka-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
           else if ($antal>=$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass5 .=
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+            
+             $dagspass5 .=
+
+              '<div class="row">'.
               '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="reserv-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
         } 
+    }
+
   } 
   if (date('Y-m-d', strtotime($row['datum'])) == $sixday){ 
         $passnamn=$row['passnamn'];
+        $passid = $row['bokningsbarID'];
+
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND kundnr ='{$login_session}'";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $bokad = $stmt->rowCount(); 
+        $stmt->closeCursor();
+        $reserv=$result['reservplats']; 
+        $bokdatum= $result['datum'];
+
+        if($reserv==1)
+        {
+        $query = "SELECT * FROM bokningar WHERE bokningsbarID = '{$passid}' AND reservplats =1 AND datum < '{$bokdatum}' ";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $antalres = $stmt->rowCount(); 
+
+        $plats = $antalres +1;
+
+          $reservplats= " Reservplats ".$plats;
+
+        }
+           else {$reservplats="";} 
+
         $query = "SELECT * FROM pass WHERE passnamn = '{$passnamn}'";  
         $stmt = $db ->prepare($query);
         $stmt->execute();
@@ -751,8 +1526,7 @@ catch (Exception $e) {
         $stmt->closeCursor(); 
         $passbe = $row['information'];
         
-
-        if ($row['installt']==1){
+       if (date('Y-m-d', strtotime($row['datum'])) == $today && date('H:i:s', strtotime($row['starttid'])) < date('H:i:s')){
           $dagspass6 .= 
             '<div class="row">'.
             '<div class="col-xs-2 col-md-2">'. 
@@ -765,62 +1539,184 @@ catch (Exception $e) {
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
               '<div class="col-xs-5 col-md-5">'. 
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
+               '</div>'.
+              '</div>'; 
+        } 
+        else if ($row['installt']==1){
+          $dagspass6 .= 
+            '<div class="row">'.
+            '<div class="col-xs-2 col-md-2">'. 
+             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+             '</div>'. 
+             '<div class="col-xs-3 col-md-3">'. 
+              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+              '</div>'. 
+              '<div class="col-xs-2 col-md-2">'. 
+              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+              '</div>'. 
+              '<div class="col-xs-5 col-md-5">'. 
+              '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
         }   
+ 
         else {
+
+          if($bokad==1) {
+            $today= date('Y-m-d');
+            $nowtime = date('H:i:s');
+            $avbokad = date('H:i:s', strtotime($row['starttid'] . ' - 120 minute'));
+
+
+           if ($row['datum'] > $today){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass6 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+            }
+
+          if ($row['datum'] == $today){
+
+              if ($nowtime <= $avbokad){
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";} 
+                $dagspass6 .= 
+                    '<div class="row">'.
+                    '<div class="col-xs-2 col-md-2">'. 
+                     '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                     '</div>'. 
+                     '<div class="col-xs-3 col-md-3">'. 
+                      '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-2 col-md-2">'. 
+                      '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                      '</div>'. 
+                      '<div class="col-xs-5 col-md-5">'. 
+                      '<form method="post">'.
+                      '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
+                     '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                      '<input type="submit"'.' name="avbokabok-submit"'. ' class="btn btn-avboka btn-block"'.'value="AVBOKA'.$reservplats.'">'.
+                      '</form>'.
+                       '</div>'.
+                      '<div class="col-xs-12 col-md-12">'. 
+                        $info. 
+                      '</div>'.
+                      '</div>' ; 
+              }
+              else if ($nowtime > $avbokad) {
+                if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+                }
+                else {$info ="";}                 
+                $dagspass6 .=
+                      '<div class="row">'.
+                      '<div class="col-xs-2 col-md-2">'. 
+                       '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+                       '</div>'. 
+                       '<div class="col-xs-3 col-md-3">'. 
+                        '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-2 col-md-2">'. 
+                        '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                        '</div>'. 
+                        '<div class="col-xs-5 col-md-5">'. 
+                        '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
+                        '</form>'.
+                         '</div>'.
+                        '<div class="col-xs-12 col-md-12">'. 
+                          $info. 
+                        '</div>'.
+                        '</div>' ;
+              }
+            }
+
+            
+
+
+          }
+          else if($bokad==0){
+         
           if  ($antal<$antalplatser){
-             if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass6 .=
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
-              '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+
+              $dagspass6 .=
+                '<div class="row">'.
+                '<div class="col-xs-2 col-md-2">'. 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="boka-submit"'. ' class="btn btn-boka btn-block"'.'value="BOKA">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
           else if ($antal>=$antalplatser){
-            if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';}
-            else {$info ="";} 
-            $dagspass6 .=
+              if ($passbe!=null){$info = '<div class="bubbles">'.'<i style="font-size:14px;color:#FFF;">' . "Info: ".$passbe . '</i>'.'</div>';
+              }
+              else {$info ="";} 
+            
+             $dagspass6 .=
 
-            '<div class="row">'.
-            '<div class="col-xs-2 col-md-2">'. 
-             '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
-             '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
-              '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
-              '</div>'. 
+              '<div class="row">'.
               '<div class="col-xs-2 col-md-2">'. 
-              '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
-              '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
-              '<form method="post">'.
-              '<input type="hidden"'. 'name="medlem"'. 'value="' .$user_check. '">'.
-              '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
-              '</form>'.
-               '</div>'.
-              '<div class="col-xs-12 col-md-12">'. 
-                $info. 
-              '</div>'.
-              '</div>' ; 
+               '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
+               '</div>'. 
+               '<div class="col-xs-3 col-md-3">'. 
+                '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
+                '</div>'. 
+                '<div class="col-xs-2 col-md-2">'. 
+                '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
+                '</div>'. 
+                '<div class="col-xs-5 col-md-5">'. 
+                '<form method="post">'.
+                '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
+               '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
+                '<input type="submit"'.' name="reserv-submit"'. ' class="btn btn-reserv btn-block"'.'value="BOKA  RESERV">'.
+                '</form>'.
+                 '</div>'.
+                '<div class="col-xs-12 col-md-12">'. 
+                  $info. 
+                '</div>'.
+                '</div>' ; 
           }
         } 
-  }
-}  
+    }
+
+  } 
+}

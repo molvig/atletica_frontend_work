@@ -2789,6 +2789,7 @@ fieldset[disabled] .btn {
 }
 
 .btn-reserv {
+  width: 70px;
   color: #333;
   background-color: #C1C1C1;
   border-color: #ccc;
@@ -2806,6 +2807,7 @@ fieldset[disabled] .btn {
   background-color: #fff;
   border-color: #ccc;
   float: right;
+  white-space: normal;
 }
 
 .btn-default_1 {

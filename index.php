@@ -2,7 +2,8 @@
 <?php include("inc/oppettider.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/get_veckans_pass.php"); ?>
-<?php include("inc/get_veckans_pass.php"); ?>
+<?php include("inc/boka.php"); ?>
+
 
 
 <!--Visar dagens öppetttider -->

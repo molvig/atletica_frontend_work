@@ -66,7 +66,7 @@ $query = "SELECT * FROM skulder WHERE kundnr = {$kundnr} ORDER By datum DESC ";
 
 		    .  '</table>'. 
 
-		    "Var snäll och kontakta oss för att lösa skulden!".
+		    "Var snäll och kontakta Atletica för att lösa skulden!".
 
       '</div>
     </div>
