@@ -92,7 +92,7 @@
 </div>
 
 <div class="col-xs-6 col-md-2"> 	
-<div class="col-xs-12"><img src="img/personal/evelina-svantesson.jpg" alt="..." class="img-rounded">
+<div class="col-xs-12"><img src="img/personal/evelina.jpg" alt="..." class="img-rounded">
   <h3><strong>Evelina </strong>Svantesson</h3>
 </div>
 </div>

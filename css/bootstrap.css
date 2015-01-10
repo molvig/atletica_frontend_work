@@ -15,10 +15,21 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+
+
 }
 body {
-  margin: 0;
-  background-image: url("../img/background_atletica.png"); /* bakgrundsbild*/
+  background-image: url(../img/background_atletica4.png); 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed; 
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  margin: 0; 
+  /*background: url("../img/background_atletica2.png") no-repeat center center fixed; /* bakgrundsbild*/
 }
 article,
 aside,

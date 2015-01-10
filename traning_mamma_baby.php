@@ -14,13 +14,13 @@
 		</h4>
 
 		<h4>
-			Kursstart: <strong>Måndag 26/1</strong><br>
-			Tid: <strong>09.45-10.45 </strong><br>
-			Plats: <strong>Atletica </strong><br>
-			Pris: <strong>695 kr/ 8 veckor</strong><br>
-			Instruktör: <strong>Anna Munther</strong>, trebarnsmamma och licensierad instruktör, utbildar i träning under och efter graviditet.
+			<strong>Kursstart:</strong> Måndag 26/1<br>
+			<strong>Tid:</strong> 09.45-10.45<br>
+			<strong>Plats:</strong> Atletica <br>
+			<strong>Pris:</strong> 695 kr/ 8 veckor<br>
+			<strong>Instruktör:</strong> Anna Munther, trebarnsmamma och licensierad instruktör, utbildar i träning under och efter graviditet.
 			<br><br> 
-			Har du frågor eller vill anmäla dig så hör av dig till Atletica på 14703 
+			Har du frågor eller vill anmäla dig så hör av dig till Atletica på 0340-14703 
 		</h4>
 
       

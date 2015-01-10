@@ -107,7 +107,7 @@
 		  	<tr>
 		    <td><strong>Student Kombi</strong></td>
 		    <td>12 mån</td>
-		    <td style="float:right">1600kr</td>
+		    <td style="float:right">3000kr</td>
 		  	</tr>
 		  	<tr>
 		  	<td colspan="4"> <i>Gym & Gruppträning </i></td>

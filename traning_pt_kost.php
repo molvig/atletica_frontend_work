@@ -26,9 +26,9 @@
      </ul>
 
             <h3> PRISLISTA </h3>
-            <h4>PT timma – första träffen 695:- Där efter 595:- </h4>
-            <h4>5 Paketet: 3075:-  <strong style="color:red">Erbjudande: 2495:-</strong></h4>
-            <h4>10 Paket: 6050:- <strong style="color:red">Erbjudande: 4800??</strong></h4>
+            <h4>Grundpris 695:-/timme</h4>
+            <h4>5 Paket: 3475 :-  <strong style="color:red">Erbjudande: 2495:-</strong></h4>
+            <h4>10 Paket: 6950:- <strong style="color:red">Erbjudande: 4600:-</strong></h4>
 
     </div> 
 
@@ -46,7 +46,7 @@
         </div>
         <br>
          <div class="row">
-                <div class="col-xs-8 col-sm-6 col-md-4"><img src="img/pt/sandra_profilbild_atletica_2.jpg" alt="..." class="img-rounded"></div>
+                <div class="col-xs-8 col-sm-6 col-md-4"><img src="img/pt/sandra.jpg" alt="..." class="img-rounded"></div>
                 <div class="col-xs-12 col-md-6">
                   <h3><strong>Sandra </strong>Ekström</h3>
                   <h5>
@@ -90,7 +90,7 @@
         </div> 
         <br>
          <div class="row">
-                <div class="col-xs-8 col-sm-6 col-md-4"><img src="img/pt/nuray.jpeg" alt="..." class="img-rounded"></div>
+                <div class="col-xs-8 col-sm-6 col-md-4"><img src="img/pt/nuray.jpg" alt="..." class="img-rounded"></div>
                  <div class="col-xs-12 col-md-6">
                   <h3><strong>Nuray </strong>Salibram</h3>
                   <h5>
