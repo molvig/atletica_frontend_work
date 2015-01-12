@@ -14,17 +14,18 @@
 		Varje termin avslutas sedan med en avslutningsshow.
 		<br><br>
 
-		Kursavgift för 12 gånger är 750 kr per kurs eller 1195 kr för två kurser ( två kurser gäller syskon eller samma person som vill gå 2 kurser) 
-		Eftersom det råder begränsade platser så är det ”först till kvarn”. Anmälan sker genom betalning på Atletica. 
+		<strong>Kursavgift:</strong> 750kr/kurs (12 gånger) eller 1195 kr för två kurser. Två kurser gäller syskon eller samma person som vill gå två kurser. 
+		Eftersom det råder begränsade platser så är det ”först till kvarn”. 
+		<br>Anmälan sker genom betalning på Atletica. 
 		<br>Vi startar ny kurs varje termin. 
 		<br>
-		<br>Nästa kursstart : vecka  4 
+		<br><strong>Nästa kursstart:</strong> Vecka 4 
       </h4>
 	</div>
 
     <div class="col-xs-12 col-md-6"> 	
     	<h3> </h3>
-		<img src="img/ungdom-2012.jpg" alt="..." class="img-rounded">
+		<img src="img/barndans.jpg" alt="..." class="img-rounded">
   	</div>
 
 
@@ -36,7 +37,7 @@
 
 		<div class="col-xs-12 col-md-6"> 	
 			<h3>Kidz Dance</h3>
-			<h5>4-5år, 6år , åk1-2</h5>
+			<h5>4-5år, 6år , åk 1-2</h5>
 			<h4>
 				Vi varvar lekar och koreografi till olika typer av musikstilar där barnen får lära sig att röra sig i takt till musiken. 
 				Vi anpassar mängden och svårighetsgraden av koreografi samt lekar efter barnens ålder och nivå.

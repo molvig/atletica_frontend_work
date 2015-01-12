@@ -37,7 +37,6 @@ $inst="";
 
 catch(Exeption $e) {
 
-	echo $e;
 	exit;
 }
 

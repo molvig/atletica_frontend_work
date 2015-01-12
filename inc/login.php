@@ -28,8 +28,8 @@ if(isset($_POST['login-member'])){
 		}
 	catch(Exeption $e) {
 
-		echo $e;
-		exit;
+  echo "Något är fel! Försök igen eller kontakta Atletica.";
+  exit;
 	}	
 
 		$stmt->closeCursor(); 

@@ -1,5 +1,6 @@
 <?php include('inc/db_con.php'); ?>
 <?php include('inc/header.php'); ?>
+<?php include('inc/reserv.php'); ?>
 <?php include('inc/get_member.php'); ?>
 <?php include('inc/skuld.php'); ?>
 
@@ -118,7 +119,7 @@
            </div>
  <?php } ?>
 
-  <?php   if ($kortet=="AG12" || $kortet=="AG24" || $kortet=="AG12+2" || $kortet=="AG24+2" ){?>
+  <?php   if (($kortet=="AG12" || $kortet=="AG24" || $kortet=="AG12+2" || $kortet=="AG24+2") && $bindningstid!=null ){?>
 
             <div class="grid_6">
             <label>Bindningstid till <br>

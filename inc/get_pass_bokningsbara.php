@@ -90,7 +90,8 @@ try {
    } 
 
 catch (Exception $e) {
-	echo $e;
+  echo "Något är fel! Försök igen eller kontakta Atletica.";
+  exit;
   }
 
 
@@ -106,7 +107,8 @@ catch (Exception $e) {
 	} 
 
   catch (Exception $e) {
-  	echo $e;
+  echo "Något är fel! Försök igen eller kontakta Atletica.";
+  exit;
   }
 
 

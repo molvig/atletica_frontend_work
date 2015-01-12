@@ -286,21 +286,112 @@
 				}	
 
 			}
+
+if(isset($_POST['boka-reserv'])){
+		$user_check = $_SESSION['login_user'];
+		if(!isset($user_check)){
+			header('Location: minsida_login.php'); // Kollar om det finns någon medlem inloggad
+			}
+
+		else{
+		
+	    $kundnr = $user_check;
+		    $bokningID = $_POST['boka-passid'];
+
+				$query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$bokningID}";  
+				$stmt = $db ->prepare($query);
+				$stmt->execute();
+				$plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+				$stmt->closeCursor(); 
+				$antalplatserna  = $plats['antalplatser'];
+				$passdatum  = $plats['datum'];
+				$stmt->closeCursor(); 
+
+				$query = "SELECT * FROM bokningar WHERE bokningsbarID= {$bokningID} AND reservplats=0";  
+				$stmt = $db ->prepare($query);
+				$stmt->execute();
+				$antalbokade = $stmt->rowCount(); 
+				$stmt->closeCursor(); 
+
+
+				$today = date('Y-m-d');
+				$sixdays = date('Y-m-d', strtotime($today. "+ 6 days"));
+
+							$query = "SELECT * FROM medlemmar WHERE kundnr= {$kundnr}";  
+							$stmt = $db ->prepare($query);
+							$stmt->execute();
+							$pass = $stmt->fetch(PDO::FETCH_ASSOC); 
+							$stmt->closeCursor(); 
+							$passantal = $pass['passantal'];
+							$fnamn = $pass['fnamn'];
+							$enamn = $pass['enamn'];
+							$mail = $pass['mail'];
+							$stmt->closeCursor(); 
+					if ($mail==null)	
+					{
+					$endUrl = "minsida_uppgifter.php";
+
+
+
+					$nomail = 	'<script>if(confirm("Du kan inte boka en reservplats utan en e-post! Vill du spara en nu?"))
+						{
+							window.location.href = "'.$endUrl.'";					
+						}
+						else
+							{
+								alert("Ingen reservplats bokades!");
+							}
+							</script>';
+
+							echo $nomail;
+					}	
+					else{
+
+							$query = "SELECT * FROM bokningar WHERE kundnr= {$kundnr} AND passdatum <= '{$sixdays}' AND passdatum >= '{$today}' "; 
+							$stmt = $db ->prepare($query);
+							$stmt->execute();
+							$bokningar = $stmt->rowCount();
+							$stmt->closeCursor(); 
+
+					if ($bokningar < $passantal){
+						try {
+							$now=date('Y-m-d H:i:s');
+							 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, passdatum, datum, reservplats, gastID) VALUES (:kundnr, :bokningsbarID, :passdatum, :datum, :reservplats, :gastID)");
+							    $q = $db -> prepare($query);
+							    $q-> execute(array(':kundnr'=>$kundnr,
+							    					':bokningsbarID'=>$bokningID,
+							    					':passdatum'=>$passdatum,
+							    					':datum'=>$now,
+							    					':reservplats'=>1,
+							    					':gastID'=>null
+							    ));
+
+						  	if($query){
+							 echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='minsida_bokningar.php'\" />";	
+							}
+						} 
+						catch (Exception $e) {
+
+						 echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';
+						 echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='minsida_bokningar.php'\" />";
+						}
+					
+					}else {
+
+					$max = '<script> alert("' ."Du kan bara vara bokad på ". $passantal. " st pass samtidigt!" .'");</script>';
+							echo $max;
+					echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='minsida_bokningar.php'\" />";	
+					}
+
+				}
+				}	
+
+
+
+
+}
+
 			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -332,7 +423,7 @@
 							$stmt->closeCursor(); 
 
 
-			          	if ($antalplatserna < $antalbokade){
+			          	if ($antalplatserna > $antalbokade){
 			                try {
 			                $query=("SELECT * FROM bokningar WHERE bokningsbarID = {$bokningID} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
 			                $stmt = $db ->prepare($query);
@@ -349,7 +440,6 @@
 			                catch (Exception $e) {
 
 			                echo '<center>' . '<h4>' . 'Det gick inte hämta från reservlistan' . '</h4>' . '</center>';
-			                echo $e;
 			                }
 
 			               if ($reserver>0 ){
@@ -383,7 +473,7 @@
 
 
 					  		$to = $mail;
-							$subject = $passnamn. " på Atletica";
+							$subject = $passnamn.  "på Atletica";
 							$txt = "
 							<html>
 							<head>
@@ -428,7 +518,6 @@
 			              catch (Exception $e) {
 
 			                echo '<center>' . '<h4>' . 'Det gick inte att boka in från reservlistan' . '</h4>' . '</center>';
-			                echo $e;
 
 			              }
 			          }
@@ -439,7 +528,6 @@
 			catch (Exception $e) {
 
                 echo '<center>' . '<h4>' . 'Det gick inte att avboka passet' . '</h4>' . '</center>';
-                echo $e;
               }
 
 	}
@@ -456,6 +544,23 @@ if(isset($_POST['avbokabok-submit'])){
 			          $q = $db -> prepare($query);
 			          $q-> execute();
 
+			          		$query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$bokningID}";  
+							$stmt = $db ->prepare($query);
+							$stmt->execute();
+							$plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+							$stmt->closeCursor(); 
+							$antalplatserna  = $plats['antalplatser'];
+							$passdatum  = $plats['datum'];
+							$stmt->closeCursor(); 
+
+							$query = "SELECT * FROM bokningar WHERE bokningsbarID= {$bokningID} AND reservplats=0";  
+							$stmt = $db ->prepare($query);
+							$stmt->execute();
+							$antalbokade = $stmt->rowCount(); 
+							$stmt->closeCursor(); 
+
+
+			          	if ($antalplatserna > $antalbokade){
 			                try {
 			                $query=("SELECT * FROM bokningar WHERE bokningsbarID = {$bokningID} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
 			                $stmt = $db ->prepare($query);
@@ -506,7 +611,7 @@ if(isset($_POST['avbokabok-submit'])){
 
 
 					  		$to = $mail;
-							$subject = $passnamn. " på Atletica";
+							$subject = $passnamn.  "på Atletica";
 							$txt = "
 							<html>
 							<head>
@@ -551,10 +656,10 @@ if(isset($_POST['avbokabok-submit'])){
 			              catch (Exception $e) {
 
 			                echo '<center>' . '<h4>' . 'Det gick inte att boka in från reservlistan' . '</h4>' . '</center>';
-			                echo $e;
 
 			              }
 			          }
+			    }
 
 
 			echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='minsida_bokningar.php'\" />";
@@ -562,7 +667,6 @@ if(isset($_POST['avbokabok-submit'])){
 			catch (Exception $e) {
 
                 echo '<center>' . '<h4>' . 'Det gick inte att avboka passet' . '</h4>' . '</center>';
-                echo $e;
               }
 
 	}

@@ -79,6 +79,11 @@
    </form>
 
 </div>
+<br>
+ <br>
+      <span class="glyphicon glyphicon-flag"></span> = Passet är uppdaterat/ändrat <br>
+      <span class="glyphicon glyphicon-star-empty"></span> = Extrapass <br>
+
 </div>
 
 <div class="col-xs-12 col-md-5">
@@ -86,9 +91,9 @@
 <h3>Låt oss inspirera dig till ett hälsosammare liv!</h3>
 <p>Oavsett om du är vältränad eller nybörjare är utgångspunkten densamma. Du kan alltid bli starkare än du var igår. 
   Vi tycker att träning ska vara roligt! Därför arbetar vi med ett brett utbud av träningsformer och strävar efter att erbjuda något för alla.
-  Vi har funnits på Otto Torells gata sen 2001 och här hittar ni oss än idag, vi är ditt gym i centrala Varberg. 
+  Vi har funnits på Otto Torells gata sedan 2001 och här hittar ni oss än idag, vi är ditt gym i centrala Varberg. 
 
-Välkommen in i värmen !  
+Välkommen in i värmen!  
 
 </p>
 

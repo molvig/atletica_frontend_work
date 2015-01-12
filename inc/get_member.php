@@ -1,3 +1,4 @@
+
 <?php	
 				
 $user_check = $_SESSION['login_user'];
@@ -34,7 +35,6 @@ $status="";
 		}
 	catch(Exeption $e) {
 
-		echo $e;
 		exit;
 	}	
 

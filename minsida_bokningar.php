@@ -1,5 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include('inc/header.php'); ?>
+<?php include('inc/reserv.php'); ?>
 <?php include('inc/get_member.php'); ?>
 <?php include('inc/skuld.php'); ?>
 <?php include('inc/get_pass_bokningsbara.php'); ?>
@@ -22,6 +23,7 @@
 <div class="row">
   <?php include("inc/menymedlem.php"); ?> 
 </div>
+
 <br>
 <div class="row">
 <div class="col-xs-12 col-md-8">

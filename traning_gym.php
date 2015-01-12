@@ -16,13 +16,13 @@
       </h4>
   	</div>
 
-
+<!--
     <div class="col-xs-12 col-md-6"> 	
     	<h3> </h3>
 		<img src="img/gym.jpg" alt="..." class="img-rounded">
   	</div>
-
-  </div>
+    
+-->  </div>
 </div>
 
 

@@ -1,5 +1,6 @@
 <?php include('inc/db_con.php'); ?>
 <?php include('inc/header.php'); ?>
+<?php include('inc/reserv.php'); ?>
 <?php include('inc/get_member.php'); ?>
 <?php include('inc/skuld.php'); ?>
 <?php include('inc/get_bokadepass.php'); ?>

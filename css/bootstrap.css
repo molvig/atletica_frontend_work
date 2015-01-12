@@ -19,18 +19,24 @@ html {
 
 }
 body {
-  background-image: url(../img/background_atletica4.png); 
+  background: url(../img/background_atletica4.png); 
   background-repeat: no-repeat;
   background-position: center center;
-  background-attachment: fixed; 
+  background-attachment: fixed;
 
-  -webkit-background-size: cover;
+  -webkit-background-size: cover ;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
+  background-size: cover ;
   margin: 0; 
+
   /*background: url("../img/background_atletica2.png") no-repeat center center fixed; /* bakgrundsbild*/
-}
+}  
+
+
+
+
+
 article,
 aside,
 details,
@@ -6330,7 +6336,7 @@ button.close {
 color: #3F3939;
 text-align: center;
 padding-top: 10px;
-padding-bottom:10px;
+
 }
 
 .footer {

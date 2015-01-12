@@ -12,6 +12,8 @@
 		      	Vi erbjuder stor variation, allt från BodyPump till Zumba, Spinning och Somamove. 
 		      	Allt för att få ett så brett träningsutbud som möjligt. 
 				Kom på våra grupppass, känn den goda träningsandan och sammanhållningen.
+
+
 		      </h4>
 		</div>	
 
