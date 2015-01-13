@@ -42,7 +42,7 @@
 							$enamn = $pass['enamn'];
 							$stmt->closeCursor(); 
 
-							$query = "SELECT * FROM bokningar WHERE kundnr= {$kundnr} AND passdatum <= '{$sixdays}' AND passdatum >= '{$today}' "; 
+							$query = "SELECT * FROM bokningar WHERE kundnr= {$kundnr} AND passdatum <= '{$sixdays}' AND passdatum >= '{$today}' AND incheckad=0  "; 
 							$stmt = $db ->prepare($query);
 							$stmt->execute();
 							$bokningar = $stmt->rowCount();

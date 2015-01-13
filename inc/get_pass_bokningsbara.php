@@ -163,13 +163,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -180,13 +180,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -209,13 +209,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -239,13 +239,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -266,13 +266,13 @@ catch (Exception $e) {
                       '<div class="col-xs-2 col-md-2">'. 
                        '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                        '</div>'. 
-                       '<div class="col-xs-3 col-md-3">'. 
+                       '<div class="col-xs-4 col-md-4">'. 
                         '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                         '</div>'. 
                         '<div class="col-xs-2 col-md-2">'. 
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
-                        '<div class="col-xs-5 col-md-5">'. 
+                        '<div class="col-xs-4 col-md-4">'. 
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -299,13 +299,13 @@ catch (Exception $e) {
                 '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -328,13 +328,13 @@ catch (Exception $e) {
               '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -393,13 +393,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -410,13 +410,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -439,13 +439,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -469,13 +469,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -496,13 +496,13 @@ catch (Exception $e) {
                       '<div class="col-xs-2 col-md-2">'. 
                        '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                        '</div>'. 
-                       '<div class="col-xs-3 col-md-3">'. 
+                       '<div class="col-xs-4 col-md-4">'. 
                         '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                         '</div>'. 
                         '<div class="col-xs-2 col-md-2">'. 
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
-                        '<div class="col-xs-5 col-md-5">'. 
+                        '<div class="col-xs-4 col-md-4">'. 
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -529,13 +529,13 @@ catch (Exception $e) {
                 '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -558,13 +558,13 @@ catch (Exception $e) {
               '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -622,13 +622,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -639,13 +639,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -668,13 +668,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -698,13 +698,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -725,13 +725,13 @@ catch (Exception $e) {
                       '<div class="col-xs-2 col-md-2">'. 
                        '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                        '</div>'. 
-                       '<div class="col-xs-3 col-md-3">'. 
+                       '<div class="col-xs-4 col-md-4">'. 
                         '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                         '</div>'. 
                         '<div class="col-xs-2 col-md-2">'. 
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
-                        '<div class="col-xs-5 col-md-5">'. 
+                        '<div class="col-xs-4 col-md-4">'. 
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -758,13 +758,13 @@ catch (Exception $e) {
                 '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -787,13 +787,13 @@ catch (Exception $e) {
               '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -850,13 +850,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -867,13 +867,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -896,13 +896,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -926,13 +926,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -953,13 +953,13 @@ catch (Exception $e) {
                       '<div class="col-xs-2 col-md-2">'. 
                        '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                        '</div>'. 
-                       '<div class="col-xs-3 col-md-3">'. 
+                       '<div class="col-xs-4 col-md-4">'. 
                         '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                         '</div>'. 
                         '<div class="col-xs-2 col-md-2">'. 
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
-                        '<div class="col-xs-5 col-md-5">'. 
+                        '<div class="col-xs-4 col-md-4">'. 
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -986,13 +986,13 @@ catch (Exception $e) {
                 '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1015,13 +1015,13 @@ catch (Exception $e) {
               '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1078,13 +1078,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -1095,13 +1095,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -1124,13 +1124,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1154,13 +1154,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1181,13 +1181,13 @@ catch (Exception $e) {
                       '<div class="col-xs-2 col-md-2">'. 
                        '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                        '</div>'. 
-                       '<div class="col-xs-3 col-md-3">'. 
+                       '<div class="col-xs-4 col-md-4">'. 
                         '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                         '</div>'. 
                         '<div class="col-xs-2 col-md-2">'. 
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
-                        '<div class="col-xs-5 col-md-5">'. 
+                        '<div class="col-xs-4 col-md-4">'. 
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -1214,13 +1214,13 @@ catch (Exception $e) {
                 '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1243,13 +1243,13 @@ catch (Exception $e) {
               '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1306,13 +1306,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -1323,13 +1323,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -1352,13 +1352,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1382,13 +1382,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1409,13 +1409,13 @@ catch (Exception $e) {
                       '<div class="col-xs-2 col-md-2">'. 
                        '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                        '</div>'. 
-                       '<div class="col-xs-3 col-md-3">'. 
+                       '<div class="col-xs-4 col-md-4">'. 
                         '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                         '</div>'. 
                         '<div class="col-xs-2 col-md-2">'. 
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
-                        '<div class="col-xs-5 col-md-5">'. 
+                        '<div class="col-xs-4 col-md-4">'. 
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -1442,13 +1442,13 @@ catch (Exception $e) {
                 '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1471,13 +1471,13 @@ catch (Exception $e) {
               '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1534,13 +1534,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="SLUT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -1551,13 +1551,13 @@ catch (Exception $e) {
             '<div class="col-xs-2 col-md-2">'. 
              '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
              '</div>'. 
-             '<div class="col-xs-3 col-md-3">'. 
+             '<div class="col-xs-4 col-md-4">'. 
               '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
               '</div>'. 
               '<div class="col-xs-2 col-md-2">'. 
               '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
               '</div>'. 
-              '<div class="col-xs-5 col-md-5">'. 
+              '<div class="col-xs-4 col-md-4">'. 
               '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="INSTÄLLT" disabled>'.
                '</div>'.
               '</div>'; 
@@ -1580,13 +1580,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1610,13 +1610,13 @@ catch (Exception $e) {
                     '<div class="col-xs-2 col-md-2">'. 
                      '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                      '</div>'. 
-                     '<div class="col-xs-3 col-md-3">'. 
+                     '<div class="col-xs-4 col-md-4">'. 
                       '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                       '</div>'. 
                       '<div class="col-xs-2 col-md-2">'. 
                       '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                       '</div>'. 
-                      '<div class="col-xs-5 col-md-5">'. 
+                      '<div class="col-xs-4 col-md-4">'. 
                       '<form method="post">'.
                       '<input type="hidden"'. 'name="avboka-kundnr"'. 'value="' .$login_session. '">'. 
                      '<input type="hidden"'. 'name="avboka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1637,13 +1637,13 @@ catch (Exception $e) {
                       '<div class="col-xs-2 col-md-2">'. 
                        '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                        '</div>'. 
-                       '<div class="col-xs-3 col-md-3">'. 
+                       '<div class="col-xs-4 col-md-4">'. 
                         '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                         '</div>'. 
                         '<div class="col-xs-2 col-md-2">'. 
                         '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                         '</div>'. 
-                        '<div class="col-xs-5 col-md-5">'. 
+                        '<div class="col-xs-4 col-md-4">'. 
                         '<input type="submit"'. ' class="btn btn-default btn-block"'.'value="-" disabled>'.
                         '</form>'.
                          '</div>'.
@@ -1670,13 +1670,13 @@ catch (Exception $e) {
                 '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="boka-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="boka-passid"'. 'value="' .$row['bokningsbarID']. '">'.
@@ -1699,13 +1699,13 @@ catch (Exception $e) {
               '<div class="col-xs-2 col-md-2">'. 
                '<p style="font-size:14px">'. date('H:i', strtotime($row['starttid'])). "-".date('H:i', strtotime($row['sluttid']))  .'</p>'.
                '</div>'. 
-               '<div class="col-xs-3 col-md-3">'. 
+               '<div class="col-xs-4 col-md-4">'. 
                 '<p style="font-size:14px">' .$row['passnamn'] .'</p>'.
                 '</div>'. 
                 '<div class="col-xs-2 col-md-2">'. 
                 '<p style="font-size:14px">'.$row['instnamn'] . '</p>'.
                 '</div>'. 
-                '<div class="col-xs-5 col-md-5">'. 
+                '<div class="col-xs-4 col-md-4">'. 
                 '<form method="post">'.
                 '<input type="hidden"'. 'name="reserv-kundnr"'. 'value="' .$login_session. '">'. 
                '<input type="hidden"'. 'name="reserv-passid"'. 'value="' .$row['bokningsbarID']. '">'.

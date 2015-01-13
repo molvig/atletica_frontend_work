@@ -20,13 +20,16 @@
 	   </div>
 	</div>
 
+
 <div class="row">
   <?php include("inc/menymedlem.php"); ?> 
 </div>
+</div>
 
+<div class="container_boka">
 <br>
-<div class="row">
-<div class="col-xs-12 col-md-8">
+<!-- <div class="col-xs-12 col-md-8"> -->
+<div class="grid_8">
 	<div class="panel panel-atletica">
 	  <div class="panel-heading"> <?php echo $veckodag;?> <?php echo date('j/n', strtotime($today));?>
 	  </div>
@@ -88,7 +91,7 @@
 
 
   </div>
-  </div>
+
 
 </div>
 

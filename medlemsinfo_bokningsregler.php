@@ -13,6 +13,11 @@
 	Du kan givetvis även boka dina gruppträningspass via telefon eller direkt i reception.
 	<br>
 	<br>
+	<strong>Kom i tid!</strong> <br>
+	När du har bokat ett gruppass är det viktigt att du kommer i tid och registerar dig i receptionen SENAST 10 minuter 
+	innan passet startar annars riskerar du att förlora din plats till någon annan.
+	<br>
+	<br>
 	<strong>Reservplatser</strong> <br>
 	Om ett pass är fullbokat kan du boka dig på reservplats och hamnar då på en väntelista. 
 	Vid avbokningar fylls passet på - i turordning - med reserver från väntelistan. 
